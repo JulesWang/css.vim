@@ -34,16 +34,19 @@ syn match cssFontProp contained "\<@font-face\>"
 syn match cssFontProp contained "\<font-size-adjust\>"
 syn match cssFontProp contained "\<font-stretch\>"
 
-syn match cssTextAttr contained "\<hanging-punctuation\>" 
-syn match cssTextAttr contained "\<punctuation-trim\>" 
-syn match cssTextAttr contained "\<text-\(justify\|\outline\|shadow\|overflow\|warp\)\>" 
-syn match cssTextAttr contained "\<word-\(break\|\wrap\)\>" 
+syn match cssTextProp contained "\<hanging-punctuation\>" 
+syn match cssTextProp contained "\<punctuation-trim\>" 
+syn match cssTextProp contained "\<text-\(justify\|\outline\|shadow\|overflow\|warp\)\>" 
+syn match cssTextProp contained "\<word-\(break\|\wrap\)\>" 
 
 syn match cssBoxProp contained "\<transform\(-\(origin\|style\)\)\=\>"
 syn match cssBoxProp contained "\<perspective\(-origin\)\=\>"
 syn match cssBoxProp contained "\<backface-visibility\>"
 
 syn match cssBoxProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
+syn match cssBoxProp contained "\<linear\>"
+syn match cssBoxProp contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
+syn match cssBoxProp contained "\<cubic-bezier\>"
 
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear-gradient\)\s*(" end=")" oneline keepend
@@ -51,8 +54,6 @@ syn region cssFunction contained matchgroup=cssFunctionName start="\<\(radial-gr
 
 " cssComment = cssVendor
 syn match cssComment contained "\(-\(webkit\|moz\|o\|ms\)-\)\|filter"
-"syn match cssFuntion contained "-\(webkit\|moz\|o\|ms\)-"
-"syn match cssComment contained "-webkit-"
 
 " CSS3 PseudoClass
 syn match cssPseudoClassId contained "\<\(last\|only\|nth\|nth-last\)-child\>"
