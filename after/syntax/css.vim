@@ -58,7 +58,7 @@ syn match cssComment contained "\(-\(webkit\|moz\|o\|ms\)-\)\|filter"
 " CSS3 PseudoClass
 syn match cssPseudoClassId contained "\<\(last\|only\|nth\|nth-last\)-child\>"
 syn match cssPseudoClassId contained "\<\(first\|last\|only\|nth\|nth-last\)-of-type\>"
-syn keyword cssPseudoClass contained root empty target enable disabled checked not selection
+syn keyword cssPseudoClassId contained root empty target enable disabled checked not selection
 
 " Oneline comment
 syntax region  cssComment  start="//" skip="\\$" end="$" keepend contains=@Spell
