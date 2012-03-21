@@ -21,5 +21,3 @@ By adding following two lines
  filetype indent on
 </pre>
 to your vimrc file, things will be much better.
-
-There are also indent problems in CSS files, I work on that now.
