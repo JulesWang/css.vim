@@ -35,7 +35,7 @@ syn match cssBoxProp contained "\<box-\(align\|direction\|flex\|ordinal-group\|o
 syn match cssBoxProp contained "\<column\(-\(\break-\(after\|before\)\|count\|gap\|rule\(-\(color\|style\|width\)\)\=\)\|span\|width\)\=\>"
 
 syn match cssFontProp contained "\<font-size-adjust\>"
-syn match cssTagName "@keyframes\>" nextgroup=cssDefinition
+syn match cssTagName "@\(-\(webkit\|moz\)-\)keyframes\>" nextgroup=cssDefinition
 syn match cssBoxProp contained "\<marquee\(-\(direction\|play-count\|speed\|style\)\)\=\>"
 syn match cssBoxProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssBoxProp contained "\<outline-offset\>" 
@@ -54,14 +54,15 @@ syn match cssBoxProp contained "\<transition\(-\(delay\|duration\|property\|timi
 syn match cssBoxAttr contained "\<linear\>"
 syn match cssBoxAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
 syn match cssBoxAttr contained "\<cubic-bezier\>"
+syn match cssBoxAttr contained "\<infinite\>"
 
 "syn match cssBoxProp contained "\<rotation\(-point\)=\>" 
 "syn match cssTextProp contained "\<hanging-punctuation\>" 
 "syn match cssTextProp contained "\<punctuation-trim\>" 
 
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear-gradient\)\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(radial-gradient\)\s*(" end=")" oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear\|radial\)-gradient\s*(" end=")" oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y|\Z\)\=\|translate\(3d\|X\|Y|\Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y|\Z\)\=\)\s*(" end=")" oneline keepend
 
 " cssComment = cssVendor
 syn match cssComment contained "\(-\(webkit\|moz\|o\|ms\)-\)\|filter"
@@ -77,4 +78,6 @@ syntax region  cssComment  start="//" skip="\\$" end="$" keepend contains=@Spell
 " Bug fix for PseudoClass after the ':'
 syn match cssPseudoClass ":\s*\w*" contains=cssPseudoClassId,cssUnicodeEscape
 
+" Bug fix for the syntax in @keyframes
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssDefinition
 
