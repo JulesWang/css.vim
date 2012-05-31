@@ -59,6 +59,7 @@ syn match cssBoxAttr contained "\<infinite\>"
 "syn match cssBoxProp contained "\<rotation\(-point\)=\>" 
 "syn match cssTextProp contained "\<hanging-punctuation\>" 
 "syn match cssTextProp contained "\<punctuation-trim\>" 
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=rem"
 
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear\|radial\)-gradient\s*(" end=")" oneline keepend
