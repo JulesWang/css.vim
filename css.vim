@@ -5,7 +5,7 @@
 "               Yeti            (Add full CSS2, HTML4 support)
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
-" Last Change:  2012 Sept. 11
+" Last Change:  2012 Aug 21
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -34,13 +34,13 @@ syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
 " HTML5 new tags 5*6=30
-syn keyword cssTagName article aside audio bdi canvas command 
+syn keyword cssTagName article aside audio bdi canvas command
 syn keyword cssTagName datalist details embed figcaption figure footer
-syn keyword cssTagName header hgroup keygen mark meter nav 
-syn keyword cssTagName output progress rt rp ruby section 
+syn keyword cssTagName header hgroup keygen mark meter nav
+syn keyword cssTagName output progress rt rp ruby section
 syn keyword cssTagName source summary time track video wbr
 
-" Tags not supported in HTML5 
+" Tags not supported in HTML5
 syn keyword cssDeprecated acronym applet basefont big center dir
 syn keyword cssDeprecated font frame frameset noframes strike tt
 
@@ -64,7 +64,7 @@ endtry
 
 syn match cssTagName "@page\>" nextgroup=cssDefinition
 " FIXME: use cssVendor here
-syn match cssTagName "@\(-\(webkit\|moz\|o\)-\)keyframes\>" nextgroup=cssDefinition
+syn match cssTagName "@\(-\(webkit\|moz\|o\|ms\)-\)\=keyframes\>" nextgroup=cssDefinition
 
 syn match cssMedia "@media\>" nextgroup=cssMediaType skipwhite skipnl
 syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all nextgroup=cssMediaComma,cssMediaBlock skipwhite skipnl
@@ -137,8 +137,8 @@ syn match cssBorderOutlineProp contained "\<border-image\(-\(outset\|repeat\|sli
 syn match cssBorderOutlineProp contained "\<border-radius\>"
 syn keyword cssBorderOutlineAttr contained thin thick medium
 syn keyword cssBorderOutlineAttr contained dotted dashed solid double groove ridge inset outset
-syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse 
-syn keyword cssBorderOutlineAttr contained stretch repeat round
+syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse
+syn keyword cssBorderOutlineAttr contained stretch round
 
 
 syn match cssBoxProp contained "\<overflow\(-\(x\|y\|style\)\)\=\>"
@@ -174,10 +174,10 @@ syn match cssFontAttr contained "\<message-box\>"
 syn match cssFontAttr contained "\<status-bar\>"
 syn match cssFontAttr contained "\<\(\(ultra\|extra\|semi\|status-bar\)-\)\=\(condensed\|expanded\)\>"
 syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
-syn keyword cssFontAttr contained bold bolder lighter larger smaller
+syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
-syn keyword cssFontAttr contained large smaller larger
-syn keyword cssFontAttr contained narrower wider
+syn keyword cssFontAttr contained large smaller larger narrower wider
+syn keyword cssFontAttr contained Courier Arial Georgia Times
 
 
 syn keyword cssGeneratedContentProp contained content quotes crop
@@ -228,15 +228,15 @@ syn keyword cssTextProp contained color direction
 syn match cssTextProp "\<\(\(word\|letter\)-spacing\|text\(-\(decoration\|transform\|align\|index\|shadow\)\)\=\|vertical-align\|unicode-bidi\|line-height\)\>"
 syn match cssTextProp contained "\<text-\(justify\|\outline\|overflow\|warp\|align-last\)\>"
 syn match cssTextProp contained "\<word-\(break\|\wrap\)\>"
-syn match cssTextProp contained "\<white-space\>" 
-syn match cssTextProp contained "\<hanging-punctuation\>" 
-syn match cssTextProp contained "\<punctuation-trim\>" 
+syn match cssTextProp contained "\<white-space\>"
+syn match cssTextProp contained "\<hanging-punctuation\>"
+syn match cssTextProp contained "\<punctuation-trim\>"
 syn match cssTextAttr contained "\<line-through\>"
 syn match cssTextAttr contained "\<text-indent\>"
 syn match cssTextAttr contained "\<\(text-\)\=\(top\|bottom\)\>"
 syn keyword cssTextAttr contained ltr rtl embed nowrap
 syn keyword cssTextAttr contained underline overline blink sub super middle
-syn keyword cssTextAttr contained capitalize uppercase lowercase 
+syn keyword cssTextAttr contained capitalize uppercase lowercase
 syn keyword cssTextAttr contained center justify baseline sub super
 syn match cssTextAttr contained "\<pre\(-\(line\|wrap\)\)\=\>"
 syn match cssTextAttr contained "\<\(allow\|force\)-end\>"
@@ -245,6 +245,7 @@ syn match cssTextAttr contained "\<inter-\(word\|ideographic\|cluster\)\>"
 syn keyword cssTextAttr contained distribute kashida first last
 syn keyword cssTextAttr contained clip ellipsis unrestricted suppress
 syn match cssTextAttr contained "\<break-all\>"
+syn match cssTextAttr contained "\<break-word\>"
 syn keyword cssTextAttr contained hyphenate
 
 
@@ -276,15 +277,17 @@ syn keyword cssAuralAttr contained faster slower
 syn keyword cssAuralAttr contained male female child code digits continuous
 syn match cssAuralAttr contained "\<lower\>"
 
-" cursor 
+" cursor
 syn keyword cssUIProp contained cursor
 syn match cssUIAttr contained "\<[ns]\=[ew]\=-resize\>"
 syn keyword cssUIAttr contained crosshair default help move pointer
 syn keyword cssUIAttr contained progress wait
 
 " FIXME: I could not find them in reference
-syn keyword cssUIAttr contained invert maker size
+syn keyword cssUIAttr contained invert maker size zoom
 syn match cssRenderAttr contained "\<run-in\>"
+syn match cssRenderAttr contained "\<text-rendering\>"
+syn match cssRenderAttr contained "\<font-smoothing\>"
 syn match cssRenderProp contained "\<marker-offset\>"
 syn match cssRenderAttr contained "\<bidi-override\>"
 
@@ -304,7 +307,7 @@ syn match cssPseudoClassId contained "\<first\(-\(line\|letter\|child\)\)\=\>"
 "syn region cssPseudoClassLang matchgroup=cssPseudoClassId start="lang(" end=")"
 syn match cssPseudoClassId contained "\<\(last\|only\|nth\|nth-last\)-child\>"
 syn match cssPseudoClassId contained "\<\(first\|last\|only\|nth\|nth-last\)-of-type\>"
-syn keyword cssPseudoClassId root empty target enable disabled checked not
+syn keyword cssPseudoClassId root empty target enable disabled checked not invalid
 syn match cssPseudoClassId contained  "::\(-moz-\)\=selection"
 
 " Comment
