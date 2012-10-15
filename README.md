@@ -3,8 +3,9 @@ Vim CSS Syntax File
 
 Change Log
 ------------
-* 2011-9-13: test and add some missing items.
-* 2011-9-11: 80% css3 support.
+* 2011-10-15: add 130 more color names.
+* 2011-09-13: test and add some missing items.
+* 2011-09-11: 80% css3 support.
 
 Thanks
 ------------
