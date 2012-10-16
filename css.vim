@@ -19,6 +19,9 @@ endif
   let main_syntax = 'css'
 endif
 
+let s:cpo_save = &cpo
+set cpo&vim
+
 syn case ignore
 
 " All HTML4 tags
@@ -480,6 +483,7 @@ if main_syntax == 'css'
   unlet main_syntax
 endif
 
-
+let &cpo = s:cpo_save
+unlet s:cpo_save
 " vim: ts=8
 
