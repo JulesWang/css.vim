@@ -244,7 +244,7 @@ syn keyword cssPositioningProp contained bottom clear clip display float left
 syn keyword cssPositioningProp contained position right top visibility
 syn match cssPositioningProp contained "\<z-index\>"
 syn keyword cssPositioningAttr contained block inline compact
-syn match cssPositioningAttr contained "\<table\(-\(row-gorup\|\(header\|footer\)-group\|row\|column\(-group\)\=\|cell\|caption\)\)\=\>"
+syn match cssPositioningAttr contained "\<table\(-\(row-group\|\(header\|footer\)-group\|row\|column\(-group\)\=\|cell\|caption\)\)\=\>"
 syn keyword cssPositioningAttr contained left right both
 syn match cssPositioningAttr contained "\<list-item\>"
 syn match cssPositioningAttr contained "\<inline-\(block\|table\)\>"
