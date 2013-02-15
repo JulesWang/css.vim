@@ -6,7 +6,7 @@ Installation
 
 ## Manual
 
-copy `css.vim` file into your `~/.vim/after/syntax/` directory;
+copy `css.vim` file into your `~/.vim/syntax/` directory;
 
 ## Using Vundle:
 
