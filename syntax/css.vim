@@ -6,7 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
 " URL:          https://github.com/JulesWang/css.vim
-" Last Change:  2012 Dec 15
+" Last Change:  2013 May 15
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -37,24 +37,25 @@ syn keyword cssTagName span strike strong style sub sup table tbody td
 syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
-" HTML5 new tags 5*6=30
-syn keyword cssTagName article aside audio bdi canvas command
-syn keyword cssTagName datalist details embed figcaption figure footer
-syn keyword cssTagName header hgroup keygen mark meter nav
+
+" 34 HTML5 tags 
+syn keyword cssTagName article aside audio bdi canvas command data
+syn keyword cssTagName datalist details dialog embed figcaption figure footer
+syn keyword cssTagName header hgroup keygen main mark menuitem meter nav
 syn keyword cssTagName output progress rt rp ruby section
 syn keyword cssTagName source summary time track video wbr
+
+" FIXME: add HTML5 attribute
 
 " Tags not supported in HTML5
 syn keyword cssDeprecated acronym applet basefont big center dir
 syn keyword cssDeprecated font frame frameset noframes strike tt
 
-"syn match cssTagName "\<table\>"
 syn match cssTagName "\*"
 
 " selectors
 syn match cssSelectorOp "[,>+]"
 syn match cssSelectorOp2 "[~|^$*]\?=" contained
-" FIXME: add HTML5 attribute
 syn region cssAttributeSelector matchgroup=cssSelectorOp start="\[" end="]" transparent contains=cssUnicodeEscape,cssSelectorOp2,cssStringQ,cssStringQQ
 
 " .class and #id
@@ -144,13 +145,10 @@ syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3
 
 " Prop and Attr
 " Reference: http://www.w3schools.com/cssref/default.asp
-syn keyword cssCommonAttr contained auto none inherit all
-syn keyword cssCommonAttr contained top bottom
-syn keyword cssCommonAttr contained medium normal
-
+syn keyword cssCommonAttr contained auto none inherit all default normal
+syn keyword cssCommonAttr contained top bottom center stretch hidden visible
 
 syn match cssAnimationProp contained "\<animation\(-\(name\|duration\|timing-function\|delay\|iteration-cout\|play-state\)\)\=\>"
-
 
 syn keyword cssAnimationAttr contained infinite alternate paused running
 " bugfix: escape linear-gradient
@@ -158,7 +156,7 @@ syn match cssAnimationAttr contained "\<linear\(-gradient\)\@!\>"
 syn match cssAnimationAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
 
 syn match cssBackgroundProp contained "\<background\(-\(color\|image\|attachment\|position\|clip\|origin\|size\)\)\=\>"
-syn keyword cssBackgroundAttr contained center fixed over contain
+syn keyword cssBackgroundAttr contained fixed over contain
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
 syn match cssBackgroundAttr contained "\<\(border\|content\|padding\)-box\>"
@@ -171,9 +169,7 @@ syn match cssBorderOutlineProp contained "\<border-image\(-\(outset\|repeat\|sli
 syn match cssBorderOutlineProp contained "\<border-radius\>"
 syn keyword cssBorderOutlineAttr contained thin thick medium
 syn keyword cssBorderOutlineAttr contained dotted dashed solid double groove ridge inset outset
-syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse
-syn keyword cssBorderOutlineAttr contained stretch round
-
+syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse round
 
 syn match cssBoxProp contained "\<overflow\(-\(x\|y\|style\)\)\=\>"
 syn match cssBoxProp contained "\<rotation\(-point\)=\>"
@@ -191,7 +187,7 @@ syn keyword cssDimensionProp contained width
 
 " shadow and sizing are in other property groups
 syn match cssFlexibleBoxProp contained "\<box-\(align\|direction\|flex\|ordinal-group\|orient\|pack\|shadow\|sizing\)\>"
-syn keyword cssFlexibleBoxAttr contained start end center baseline stretch
+syn keyword cssFlexibleBoxAttr contained start end baseline
 syn keyword cssFlexibleBoxAttr contained normal reverse
 syn keyword cssFlexibleBoxAttr contained single mulitple
 syn keyword cssFlexibleBoxAttr contained horizontal
@@ -271,7 +267,7 @@ syn match cssTextAttr contained "\<\(text-\)\=\(top\|bottom\)\>"
 syn keyword cssTextAttr contained ltr rtl embed nowrap
 syn keyword cssTextAttr contained underline overline blink sub super middle
 syn keyword cssTextAttr contained capitalize uppercase lowercase
-syn keyword cssTextAttr contained center justify baseline sub super
+syn keyword cssTextAttr contained justify baseline sub super
 syn match cssTextAttr contained "\<pre\(-\(line\|wrap\)\)\=\>"
 syn match cssTextAttr contained "\<\(allow\|force\)-end\>"
 syn keyword cssTextAttr contained start end adjacent
@@ -314,17 +310,9 @@ syn match cssAuralAttr contained "\<lower\>"
 " cursor
 syn keyword cssUIProp contained cursor
 syn match cssUIAttr contained "\<[ns]\=[ew]\=-resize\>"
-syn keyword cssUIAttr contained crosshair default help move pointer
+syn keyword cssUIAttr contained crosshair help move pointer
 syn keyword cssUIAttr contained progress wait
-
-" FIXME: I could not find them in reference
 syn keyword cssUIAttr contained invert maker size zoom
-syn match cssRenderAttr contained "\<run-in\>"
-syn match cssRenderAttr contained "\<text-rendering\>"
-syn match cssRenderAttr contained "\<font-smoothing\>"
-syn match cssRenderProp contained "\<marker-offset\>"
-syn match cssRenderAttr contained "\<bidi-override\>"
-
 
 " FIXME: This allows cssMediaBlock before the semicolon, which is wrong.
 syn region cssInclude start="@import" end=";" contains=cssComment,cssURL,cssUnicodeEscape,cssMediaType
