@@ -6,7 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
 " URL:          https://github.com/JulesWang/css.vim
-" Last Change:  2013 May 15
+" Last Change:  2013 July 22
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -67,15 +67,7 @@ catch /^.*/
 syn match cssIdentifier "#[A-Za-z_@][A-Za-z0-9_@-]*"
 endtry
 
-syn match cssTagName "@page\>" nextgroup=cssDefinition
-" FIXME: use cssVendor here
-syn match cssTagName "@\(-\(webkit\|moz\|o\|ms\)-\)\=keyframes\>" nextgroup=cssDefinition
-
-syn match cssMedia "@media\>" nextgroup=cssMediaType skipwhite skipnl
-syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all nextgroup=cssMediaComma,cssMediaBlock skipwhite skipnl
-"syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=cssTagName,cssError,cssComment,cssDefinition,cssURL,cssUnicodeEscape,cssIdentifier
-
+" digits
 syn match cssValueInteger contained "[-+]\=\d\+"
 syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\="
 syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\)"
@@ -83,6 +75,37 @@ syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)"
 syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)"
 syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
 
+
+" @media
+syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma skipwhite skipnl
+syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all  contained skipwhite skipnl nextgroup=cssMediaFeature,cssMadiaBlock
+syn match cssMediaFeature /\(and\)\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMadiaBlock
+syn keyword cssMediaKeyword and contained
+syn keyword cssMediaProp grid monochrome orientation scan contained
+syn match cssMediaProp /color\(-index\)\=/ contained
+syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
+syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
+syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|color\)/ contained
+syn match cssMediaAttr /\(portrait\|landscape\)/ contained
+syn region cssMadiaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
+syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
+
+" @page
+syn match cssPage "@page\>"  nextgroup=cssPagePseudo,cssDefinition  skipwhite skipnl
+syn match cssPagePseudo /:\(left\|right\|first\|\)/ nextgroup=cssDefinition contained skipwhite skipnl
+syn match cssPageHeaderProp /@\(\(top\|left\|right\|bottom\)-\(left\|center\|right\|middle\|bottom\)\)\(-corner\)\=/ contained
+
+" @keyframe
+syn match cssKeyFrame "@\(-.*-\)\=keyframes\>\(\s*\<\S*\>\)\="  nextgroup=cssKeyFrameBlock contains=cssVendor skipwhite skipnl
+syn region cssKeyFrameBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssKeyFrameSelector,cssDefinition
+syn match cssKeyFrameSelector /\(\d*%\|from\|to\)\=/  contained skipwhite skipnl
+
+" @import
+syn region cssInclude start=/@import\>/ end=/\ze;/ contains=cssComment,cssURL,cssUnicodeEscape,cssMediaType,cssStringQ,cssStringQQ
+syn region cssInclude start=/@charset\>/ end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment
+syn region cssInclude start=/@namespace\>/ end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment
+
+" @font-face
 syn match cssFontDescriptor "@font-face\>" nextgroup=cssFontDescriptorBlock skipwhite skipnl
 syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssComment,cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr
 syn match cssFontDescriptorProp contained "\<\(unicode-range\|unit-per-em\|panose-1\|cap-height\|x-height\|definition-src\)\>"
@@ -314,8 +337,6 @@ syn keyword cssUIAttr contained crosshair help move pointer
 syn keyword cssUIAttr contained progress wait
 syn keyword cssUIAttr contained invert maker size zoom
 
-" FIXME: This allows cssMediaBlock before the semicolon, which is wrong.
-syn region cssInclude start="@import" end=";" contains=cssComment,cssURL,cssUnicodeEscape,cssMediaType
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
 syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition
@@ -456,6 +477,15 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssMedia Special
   HiLink cssMediaType Special
   HiLink cssMediaComma Normal
+  HiLink cssMediaFeature Normal
+  HiLink cssMediaKeyword Statement
+  HiLink cssMediaProp StorageClass
+  HiLink cssMediaAttr Type
+  HiLink cssPage Special
+  HiLink cssPagePseudo PreProc
+  HiLink cssPageHeaderProp PreProc
+  HiLink cssKeyFrame Special
+  HiLink cssKeyFrameSelector Constant
   HiLink cssFontDescriptor Special
   HiLink cssFontDescriptorFunction Constant
   HiLink cssFontDescriptorProp StorageClass
