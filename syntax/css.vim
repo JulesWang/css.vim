@@ -79,7 +79,7 @@ syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
 " @media
 syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma skipwhite skipnl
 syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all  contained skipwhite skipnl nextgroup=cssMediaFeature,cssMadiaBlock
-syn match cssMediaFeature /\(and\)\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMadiaBlock
+syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMadiaBlock
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaProp grid monochrome orientation scan contained
 syn match cssMediaProp /color\(-index\)\=/ contained
