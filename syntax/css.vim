@@ -77,10 +77,11 @@ syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
 
 
 " @media
-syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma skipwhite skipnl
-syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all  contained skipwhite skipnl nextgroup=cssMediaFeature,cssMadiaBlock
+syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma,cssMediaKeyword2 skipwhite skipnl
+syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMadiaBlock
 syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMadiaBlock
 syn keyword cssMediaKeyword and contained
+syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
 syn keyword cssMediaProp grid monochrome orientation scan contained
 syn match cssMediaProp /color\(-index\)\=/ contained
 syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
@@ -478,6 +479,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssMediaComma Normal
   HiLink cssMediaFeature Normal
   HiLink cssMediaKeyword Statement
+  HiLink cssMediaKeyword2 Statement
   HiLink cssMediaProp StorageClass
   HiLink cssMediaAttr Type
   HiLink cssPage Special
