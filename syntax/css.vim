@@ -70,7 +70,7 @@ endtry
 " digits
 syn match cssValueInteger contained "[-+]\=\d\+"
 syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\="
-syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\)"
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dpcm\)"
 syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)"
 syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)"
 syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
@@ -83,11 +83,10 @@ syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl conta
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
 syn keyword cssMediaProp grid monochrome orientation scan contained
-syn match cssMediaProp /color\(-index\)\=/ contained
 syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
-syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|color\)/ contained
-syn match cssMediaAttr /\(portrait\|landscape\)/ contained
+syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/ contained
+syn keyword cssMediaAttr portrait landscape progressive interlace contained
 syn region cssMadiaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
 syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
 
