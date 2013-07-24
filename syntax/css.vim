@@ -174,21 +174,21 @@ syn keyword cssCommonAttr contained top bottom center stretch hidden visible
 syn match cssAnimationProp contained "\<animation\(-\(name\|duration\|timing-function\|delay\|iteration-cout\|play-state\)\)\=\>"
 
 syn keyword cssAnimationAttr contained infinite alternate paused running
-" bugfix: escape linear-gradient
+syn match cssAnimationAttr contained "\<alternate-reverse\>"
 syn match cssAnimationAttr contained "\<linear\(-gradient\)\@!\>"
 syn match cssAnimationAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
+syn match cssAnimationAttr contained "\<content\(-box\)\=\>"
 
 syn match cssBackgroundProp contained "\<background\(-\(color\|image\|attachment\|position\|clip\|origin\|size\)\)\=\>"
 syn keyword cssBackgroundAttr contained fixed over contain
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
-syn match cssBackgroundAttr contained "\<\(border\|content\|padding\)-box\>"
 
-syn match cssBorderOutlineProp contained "\<border\@!\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\)\)\=\>"
+syn match cssBorderOutlineProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\)\)\=\>"
 syn match cssBorderOutlineProp contained "\<outline\(-\(width\|style\|color\)\)\=\>"
 syn match cssBorderOutlineProp contained "\<border-\(top\|bottom\)-\(left\|right\)\(-radius\)\=\>"
 syn match cssBorderOutlineProp contained "\<border-image\(-\(outset\|repeat\|slice\|source\|width\)\)\=\>"
-syn match cssBorderOutlineProp contained "\<border-radius\>"
+syn match cssBorderOutlineProp contained "\<border-\(radius\|box\)\>"
 syn keyword cssBorderOutlineAttr contained thin thick medium
 syn keyword cssBorderOutlineAttr contained dotted dashed solid double groove ridge inset outset
 syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse round
@@ -232,7 +232,7 @@ syn keyword cssFontAttr contained large smaller larger narrower wider
 syn keyword cssFontAttr contained Courier Arial Georgia Times
 
 
-syn keyword cssGeneratedContentProp contained content quotes crop
+syn keyword cssGeneratedContentProp contained quotes crop
 syn match cssGeneratedContentProp contained "\<counter-\(reset\|increment\)\>"
 syn match cssGeneratedContentProp contained "\<move-to\>"
 syn match cssGeneratedContentProp contained "\<page-policy\>"
@@ -256,7 +256,7 @@ syn match cssMarginProp contained "\<margin\(-\(top\|right\|bottom\|left\)\)\=\>
 syn match cssMultiColumnProp contained "\<column\(-\(\break-\(after\|before\)\|count\|gap\|rule\(-\(color\|style\|width\)\)\=\)\|span\|width\)\=\>"
 
 
-syn match cssPaddingProp contained "\<padding\(-\(top\|right\|bottom\|left\)\)\=\>"
+syn match cssPaddingProp contained "\<padding\(-\(top\|right\|bottom\|left\|box\)\)\=\>"
 
 syn keyword cssPositioningProp contained bottom clear clip display float left
 syn keyword cssPositioningProp contained position right top visibility
