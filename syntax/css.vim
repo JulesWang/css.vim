@@ -376,10 +376,6 @@ syn match cssHack contained "*"
 syntax match cssNoisySymbols /[\:\;\,]/ contained
 syntax match cssUnits /\(-\|#\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\)/ contained
 
-if main_syntax == "css"
-  syn sync minlines=10
-endif
-
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -508,6 +504,8 @@ if version >= 508 || !exists("did_css_syn_inits")
 endif
 
 let b:current_syntax = "css"
+
+syn sync fromstart
 
 if main_syntax == 'css'
   unlet main_syntax
