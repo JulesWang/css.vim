@@ -68,8 +68,8 @@ syn match cssIdentifier "#[A-Za-z_@][A-Za-z0-9_@-]*"
 endtry
 
 " digits
-syn match cssValueInteger contained "[-+]\=\d\+"
-syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\="
+syn match cssValueInteger contained "[-+]\=\d\+" contains=cssUnits
+syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\=" contains=cssUnits
 syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)" contains=cssUnits
 syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)" contains=cssUnits
 syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)" contains=cssUnits
@@ -87,7 +87,7 @@ syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/ contained
 syn keyword cssMediaAttr portrait landscape progressive interlace contained
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHack,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2
 syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
 
 " @page
@@ -340,7 +340,7 @@ syn keyword cssUIAttr contained invert maker size zoom
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssNoisySymbols
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHack,cssDefinition,cssNoisySymbols
 syn match cssBraceError "}"
 
 " Pseudo class
@@ -366,9 +366,10 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|khtml\|moz\|o\|ms\)-\)"
+syn match cssHack contained "*"
 
 syntax match cssNoisySymbols /[\:\;\,]/ contained
-syntax match cssUnits /\(#\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\)/ contained
+syntax match cssUnits /\(-\|#\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\)/ contained
 
 if main_syntax == "css"
   syn sync minlines=10
@@ -387,6 +388,7 @@ if version >= 508 || !exists("did_css_syn_inits")
 
   HiLink cssComment Comment
   HiLink cssVendor Comment
+  HiLink cssHack Comment
   HiLink cssTagName Statement
   HiLink cssDeprecated Error
   HiLink cssSelectorOp Special
