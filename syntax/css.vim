@@ -340,6 +340,10 @@ syn keyword cssUIAttr contained crosshair help move pointer
 syn keyword cssUIAttr contained progress wait
 syn keyword cssUIAttr contained invert maker size zoom
 
+" misc ie props
+syn match cssUIProp contained "\<filter\>"
+syn keyword cssUIAttr contained progid DXImageTransform Microsoft
+
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
 syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHack,cssDefinition,cssNoisySymbols
