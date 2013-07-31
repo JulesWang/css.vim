@@ -70,7 +70,7 @@ endtry
 " digits
 syn match cssValueInteger contained "[-+]\=\d\+"
 syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\="
-syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dpcm\)"
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)" contains=cssUnits
 syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)"
 syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)"
 syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
@@ -338,7 +338,7 @@ syn keyword cssUIAttr contained invert maker size zoom
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssNoisySymbols
 syn match cssBraceError "}"
 
 " Pseudo class
@@ -365,6 +365,8 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
 
+syntax match cssNoisySymbols /[\:\;]/ contained
+syntax match cssUnits /\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)/ contained
 
 if main_syntax == "css"
   syn sync minlines=10
@@ -492,6 +494,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssFontDescriptorAttr Type
   HiLink cssUnicodeRange Constant
   HiLink cssClassName Function
+  HiLink cssNoisySymbols Noise
   delcommand HiLink
 endif
 
