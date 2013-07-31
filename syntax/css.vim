@@ -218,7 +218,7 @@ syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>"
 syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
 
 
-syn match cssFontProp contained "\<font\(-\(family\|style\|variant\|weight\|size\(-adjust\)\=\|stretch\)\)\=\>"
+syn match cssFontProp contained "\<font\(-\(family\|style\|variant\|weight\|smoothing\|size\(-adjust\)\=\|stretch\)\)\=\>"
 syn match cssFontAttr contained "\<\(sans-\)\=\<serif\>"
 syn match cssFontAttr contained "\<small\(-\(caps\|caption\)\)\=\>"
 syn match cssFontAttr contained "\<x\{1,2\}-\(large\|small\)\>"
@@ -228,8 +228,8 @@ syn match cssFontAttr contained "\<\(\(ultra\|extra\|semi\|status-bar\)-\)\=\(co
 syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
 syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
-syn keyword cssFontAttr contained large smaller larger narrower wider
-syn keyword cssFontAttr contained Courier Arial Georgia Times
+syn keyword cssFontAttr contained large smaller larger narrower wider antialiased
+syn keyword cssFontAttr contained Courier Arial Georgia Times Helvetica Neue
 
 
 syn keyword cssGeneratedContentProp contained quotes crop
@@ -311,6 +311,7 @@ syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline-offset\>"
 syn match cssUIProp contained "\<box-sizing\>"
 syn keyword cssUIProp contained appearance icon resize
+syn match cssUIProp contained 'interpolation-mode'
 syn keyword cssUIAttr contained window button menu field
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
