@@ -231,7 +231,7 @@ syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
 syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
 syn keyword cssFontAttr contained large smaller larger narrower wider
-syn keyword cssFontAttr contained Courier Arial Georgia Times
+syn keyword cssFontAttr contained Antiqua Arial Black Book Charcoal Comic Courier Dingbats Gadget Geneva Georgia Grande Helvetica Impact Linotype Lucida MS Monaco Neue New Palatino Roboto Roman Sans Symbol Tahoma Times Trebuchet Unicode Verdana Webdings Wingdings York Zapf
 
 
 syn keyword cssGeneratedContentProp contained quotes crop
