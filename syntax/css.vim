@@ -37,7 +37,7 @@ syn keyword cssTagName span strike strong style sub sup table tbody td
 syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
-" 34 HTML5 tags 
+" 34 HTML5 tags
 syn keyword cssTagName article aside audio bdi canvas command data
 syn keyword cssTagName datalist details dialog embed figcaption figure footer
 syn keyword cssTagName header hgroup keygen main mark menuitem meter nav
@@ -342,7 +342,7 @@ syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
 
 syn keyword cssUIProp contained resize
-syn keyword cssUIAttr contained both horizontal vertical 
+syn keyword cssUIAttr contained both horizontal vertical
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
