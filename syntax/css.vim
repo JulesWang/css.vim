@@ -65,12 +65,12 @@ syn match cssIdentifier "#[A-Za-z_@][A-Za-z0-9_@-]*"
 endtry
 
 " digits
-syn match cssValueInteger contained "[-+]\=\d\+"
-syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\="
-syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dpcm\)"
-syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)"
-syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)"
-syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
+syn match cssValueInteger contained "[-+]\=\d\+" contains=cssUnitDecorators
+syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\=" contains=cssUnitDecorators
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)" contains=cssUnitDecorators
+syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)" contains=cssUnitDecorators
+syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)" contains=cssUnitDecorators
+syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)" contains=cssUnitDecorators
 
 
 " @media
@@ -158,8 +158,8 @@ syn match cssImportant contained "!\s*important\>"
 
 syn match cssColor contained "\<transparent\>"
 syn match cssColor contained "\<white\>"
-syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>"
-syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>"
+syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>" contains=cssUnitDecorators
+syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>" contains=cssUnitDecorators
 
 syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\)\s*(" end=")" oneline keepend
@@ -395,6 +395,8 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
 
+syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
+
 " Attr Enhance
 " Some kewords are both Prop and Attr, so we have to handle them
 syn region cssAttrRegion start=/:/ end=/;/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp
@@ -402,6 +404,7 @@ syn region cssAttrRegion start=/:/ end=/;/ contained contains=css.*Attr,cssColor
 " Hack for transition
 " The 'transition' Prop has Props after ':'.
 syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp
+
 
 if main_syntax == "css"
   syn sync minlines=10
@@ -530,6 +533,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssClassName Function
   HiLink cssProp StorageClass
   HiLink cssAttr Constant
+  HiLink cssUnitDecorators Number
   delcommand HiLink
 endif
 
