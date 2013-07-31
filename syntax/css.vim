@@ -311,7 +311,7 @@ syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline-offset\>"
 syn match cssUIProp contained "\<box-sizing\>"
 syn keyword cssUIProp contained appearance icon resize
-syn match cssUIProp contained 'interpolation-mode'
+syn match cssUIProp contained /\(interpolation-mode\|tap-highlight-color\)/
 syn keyword cssUIAttr contained window button menu field
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
