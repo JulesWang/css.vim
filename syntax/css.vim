@@ -19,6 +19,9 @@ endif
   let main_syntax = 'css'
 endif
 
+" A fix for cssHacks
+setlocal iskeyword-=_
+
 let s:cpo_save = &cpo
 set cpo&vim
 
@@ -87,7 +90,7 @@ syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/ contained
 syn keyword cssMediaAttr portrait landscape progressive interlace contained
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHack,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHacks,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2
 
 " @page
 syn match cssPage "@page\>"  nextgroup=cssPagePseudo,cssDefinition  skipwhite skipnl
@@ -237,6 +240,7 @@ syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
 syn keyword cssFontAttr contained large smaller larger narrower wider antialiased
 syn keyword cssFontAttr contained Courier Arial Georgia Times Helvetica Neue
+syn match cssFontAttr contained "\<sans-serif\>"
 
 
 syn keyword cssGeneratedContentProp contained quotes crop
@@ -345,7 +349,7 @@ syn keyword cssUIAttr contained progid DXImageTransform Microsoft
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHack,cssDefinition,cssNoisySymbols
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssHacks,cssDefinition,cssNoisySymbols
 syn match cssBraceError "}"
 
 " Pseudo class
@@ -371,7 +375,7 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|khtml\|moz\|o\|ms\)-\)"
-syn match cssHack contained "*"
+syn match cssHacks contained /\(_\|*\)/
 
 syntax match cssNoisySymbols /[\:\;\,]/ contained
 syntax match cssUnits /\(-\|#\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\)/ contained
@@ -389,7 +393,7 @@ if version >= 508 || !exists("did_css_syn_inits")
 
   HiLink cssComment Comment
   HiLink cssVendor Comment
-  HiLink cssHack Comment
+  HiLink cssHacks Comment
   HiLink cssTagName Statement
   HiLink cssDeprecated Error
   HiLink cssSelectorOp Special
@@ -503,9 +507,9 @@ if version >= 508 || !exists("did_css_syn_inits")
   delcommand HiLink
 endif
 
-let b:current_syntax = "css"
-
 syn sync fromstart
+
+let b:current_syntax = "css"
 
 if main_syntax == 'css'
   unlet main_syntax
