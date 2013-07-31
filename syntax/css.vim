@@ -38,7 +38,7 @@ syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
 
-" 34 HTML5 tags 
+" 34 HTML5 tags
 syn keyword cssTagName article aside audio bdi canvas command data
 syn keyword cssTagName datalist details dialog embed figcaption figure footer
 syn keyword cssTagName header hgroup keygen main mark menuitem meter nav
@@ -78,8 +78,8 @@ syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
 
 " @media
 syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma,cssMediaKeyword2 skipwhite skipnl
-syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMadiaBlock
-syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMadiaBlock
+syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMediaBlock
+syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMediaBlock
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
 syn keyword cssMediaProp grid monochrome orientation scan contained
@@ -87,7 +87,7 @@ syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/ contained
 syn keyword cssMediaAttr portrait landscape progressive interlace contained
-syn region cssMadiaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
 syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
 
 " @page
