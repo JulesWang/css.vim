@@ -20,6 +20,7 @@ and run `:BundleInstall` in vim.
 
 Change Log
 ------------
+* 2013-07-30: Highlight Props and Attrs with different colors.
 * 2013-07-22: Fix @media(issue #6),@import,@charset,@namespace,@page,@keyframe syntaxs.
 * 2013-01-13: Add support for installation using vundle.
 * 2011-10-15: Add 130 more color names.
