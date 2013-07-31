@@ -232,6 +232,7 @@ syn match cssFontAttr contained "\<x\{1,2\}-\(large\|small\)\>"
 syn match cssFontAttr contained "\<message-box\>"
 syn match cssFontAttr contained "\<status-bar\>"
 syn match cssFontAttr contained "\<\(\(ultra\|extra\|semi\|status-bar\)-\)\=\(condensed\|expanded\)\>"
+syn match cssFontAttr contained "\<subpixel-antialiased\>"
 syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
 syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
@@ -268,12 +269,12 @@ syn match cssPaddingProp contained "\<padding\(-\(top\|right\|bottom\|left\|box\
 syn keyword cssPositioningProp contained bottom clear clip display float left
 syn keyword cssPositioningProp contained position right top visibility
 syn match cssPositioningProp contained "\<z-index\>"
-syn keyword cssPositioningAttr contained block inline compact
-syn match cssPositioningAttr contained "\<table\(-\(row-group\|\(header\|footer\)-group\|row\|column\(-group\)\=\|cell\|caption\)\)\=\>"
+syn keyword cssPositioningAttr contained compact block
 syn keyword cssPositioningAttr contained left right both
-syn match cssPositioningAttr contained "\<list-item\>"
-syn match cssPositioningAttr contained "\<inline-\(block\|table\)\>"
 syn keyword cssPositioningAttr contained static relative absolute fixed
+syn match cssPositioningAttr contained "\<table\(-\(row-group\|\(header\|footer\)-group\|row\|column\(-group\)\=\|cell\|caption\)\)\=\>"
+syn match cssPositioningAttr contained "\<list-item\>"
+syn match cssPositioningAttr contained "\<inline\(-block\|-stack\)\=\>"
 
 syn match cssPrintProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
 syn keyword cssPrintProp contained orphans widows
@@ -285,13 +286,14 @@ syn keyword cssTableAttr contained fixed collapse separate show hide once always
 
 syn keyword cssTextProp contained color direction
 syn match cssTextProp "\<\(\(word\|letter\)-spacing\|text\(-\(decoration\|transform\|align\|index\|shadow\)\)\=\|vertical-align\|unicode-bidi\|line-height\)\>"
-syn match cssTextProp contained "\<text-\(justify\|\outline\|overflow\|warp\|align-last\|size-adjust\)\>"
+syn match cssTextProp contained "\<text-\(justify\|\outline\|overflow\|warp\|align-last\|size-adjust\|rendering\)\>"
 syn match cssTextProp contained "\<word-\(break\|\wrap\)\>"
 syn match cssTextProp contained "\<white-space\>"
 syn match cssTextProp contained "\<hanging-punctuation\>"
 syn match cssTextProp contained "\<punctuation-trim\>"
 syn match cssTextAttr contained "\<line-through\>"
 syn match cssTextAttr contained "\<text-indent\>"
+syn match cssTextAttr contained "\<optimizeLegibility\>"
 syn match cssTextAttr contained "\<\(text-\)\=\(top\|bottom\)\>"
 syn keyword cssTextAttr contained ltr rtl embed nowrap
 syn keyword cssTextAttr contained underline overline blink sub super middle
