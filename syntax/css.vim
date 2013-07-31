@@ -312,7 +312,7 @@ syn keyword cssTextAttr contained hyphenate
 syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline-offset\>"
 syn match cssUIProp contained "\<box-sizing\>"
-syn keyword cssUIProp contained appearance icon resize
+syn keyword cssUIProp contained appearance icon resize bicubic
 syn match cssUIProp contained /\(interpolation-mode\|tap-highlight-color\|user-select\)/
 syn keyword cssUIAttr contained window button menu field
 
