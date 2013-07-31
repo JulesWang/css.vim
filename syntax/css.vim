@@ -87,7 +87,7 @@ syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
 syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/ contained
 syn keyword cssMediaAttr portrait landscape progressive interlace contained
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2
 syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
 
 " @page
