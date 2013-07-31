@@ -6,7 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
 " URL:          https://github.com/JulesWang/css.vim
-" Last Change:  2013 July 22
+" Last Change:  2013 July 31
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -37,15 +37,12 @@ syn keyword cssTagName span strike strong style sub sup table tbody td
 syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
-
 " 34 HTML5 tags 
 syn keyword cssTagName article aside audio bdi canvas command data
 syn keyword cssTagName datalist details dialog embed figcaption figure footer
 syn keyword cssTagName header hgroup keygen main mark menuitem meter nav
 syn keyword cssTagName output progress rt rp ruby section
 syn keyword cssTagName source summary time track video wbr
-
-" FIXME: add HTML5 attribute
 
 " Tags not supported in HTML5
 syn keyword cssDeprecated acronym applet basefont big center dir
@@ -82,18 +79,22 @@ syn keyword cssMediaType contained screen print aural braile embosed handheld pr
 syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr nextgroup=cssMediaFeature,cssMadiaBlock
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
-syn keyword cssMediaProp grid monochrome orientation scan contained
-syn match cssMediaProp /\(\(device\)-\)\=aspect-ratio/ contained
-syn match cssMediaProp /\(\(max\|min\)-\)\=device-\(height\|width\)/ contained
-syn match cssMediaProp /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/ contained
-syn keyword cssMediaAttr portrait landscape progressive interlace contained
+
 syn region cssMadiaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
 syn match cssMediaComma "," nextgroup=cssMediaType skipwhite skipnl
+
+" Reference: http://www.w3.org/TR/css3-mediaqueries/
+syn keyword cssMediaProp contained width height orientation monochrome scan grid
+syn match cssMediaProp contained /\(\(device\)-\)\=aspect-ratio/
+syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-\(height\|width\)/
+syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/
+syn keyword cssMediaAttr contained portrait landscape progressive interlace
 
 " @page
 syn match cssPage "@page\>"  nextgroup=cssPagePseudo,cssDefinition  skipwhite skipnl
 syn match cssPagePseudo /:\(left\|right\|first\|\)/ nextgroup=cssDefinition contained skipwhite skipnl
 syn match cssPageHeaderProp /@\(\(top\|left\|right\|bottom\)-\(left\|center\|right\|middle\|bottom\)\)\(-corner\)\=/ contained
+syn keyword cssPageProp content size contained
 
 " @keyframe
 syn match cssKeyFrame "@\(-.*-\)\=keyframes\>\(\s*\<\S*\>\)\="  nextgroup=cssKeyFrameBlock contains=cssVendor skipwhite skipnl
@@ -167,7 +168,6 @@ syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear\|r
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y|\Z\)\=\|translate\(3d\|X\|Y|\Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y|\Z\)\=\|perspective\)\s*(" end=")" oneline keepend
 
 " Prop and Attr
-" Reference: http://www.w3schools.com/cssref/default.asp
 syn keyword cssCommonAttr contained auto none inherit all default normal
 syn keyword cssCommonAttr contained top bottom center stretch hidden visible
 
@@ -178,21 +178,23 @@ syn match cssAnimationAttr contained "\<alternate-reverse\>"
 syn match cssAnimationAttr contained "\<linear\(-gradient\)\@!\>"
 syn match cssAnimationAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
 syn match cssAnimationAttr contained "\<content\(-box\)\=\>"
+syn match cssAnimationAttr contained "\<border-box\>"
 
-syn match cssBackgroundProp contained "\<background\(-\(color\|image\|attachment\|position\|clip\|origin\|size\)\)\=\>"
+syn match cssBackgroundProp contained "\<background\(-\(color\|image\|repeat\|attachment\|position\|clip\|origin\|size\)\)\=\>"
 syn keyword cssBackgroundAttr contained fixed over contain
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
 
 syn match cssBorderOutlineProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\)\)\=\>"
-syn match cssBorderOutlineProp contained "\<outline\(-\(width\|style\|color\)\)\=\>"
 syn match cssBorderOutlineProp contained "\<border-\(top\|bottom\)-\(left\|right\)\(-radius\)\=\>"
 syn match cssBorderOutlineProp contained "\<border-image\(-\(outset\|repeat\|slice\|source\|width\)\)\=\>"
-syn match cssBorderOutlineProp contained "\<border-\(radius\|box\)\>"
+syn match cssBorderOutlineProp contained "\<border-radius\>"
 syn keyword cssBorderOutlineAttr contained thin thick medium
 syn keyword cssBorderOutlineAttr contained dotted dashed solid double groove ridge inset outset
 syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse round
 
+syn match cssBoxProp contained "\<padding\(-\(top\|right\|bottom\|left\)\)\=\>"
+syn match cssBoxProp contained "\<margin\(-\(top\|right\|bottom\|left\)\)\=\>"
 syn match cssBoxProp contained "\<overflow\(-\(x\|y\|style\)\)\=\>"
 syn match cssBoxProp contained "\<rotation\(-point\)=\>"
 syn keyword cssBoxAttr contained visible hidden scroll auto
@@ -210,7 +212,7 @@ syn keyword cssDimensionProp contained width
 " shadow and sizing are in other property groups
 syn match cssFlexibleBoxProp contained "\<box-\(align\|direction\|flex\|ordinal-group\|orient\|pack\|shadow\|sizing\)\>"
 syn keyword cssFlexibleBoxAttr contained start end baseline
-syn keyword cssFlexibleBoxAttr contained normal reverse
+syn keyword cssFlexibleBoxAttr contained reverse
 syn keyword cssFlexibleBoxAttr contained single mulitple
 syn keyword cssFlexibleBoxAttr contained horizontal
 " bugfix: escape vertial-align
@@ -250,13 +252,7 @@ syn match cssListAttr contained "\<\(decimal\(-leading-zero\)\=\|cjk-ideographic
 syn keyword cssListAttr contained disc circle square hebrew armenian georgian
 syn keyword cssListAttr contained inside outside
 
-
-syn match cssMarginProp contained "\<margin\(-\(top\|right\|bottom\|left\)\)\=\>"
-
 syn match cssMultiColumnProp contained "\<column\(-\(\break-\(after\|before\)\|count\|gap\|rule\(-\(color\|style\|width\)\)\=\)\|span\|width\)\=\>"
-
-
-syn match cssPaddingProp contained "\<padding\(-\(top\|right\|bottom\|left\|box\)\)\=\>"
 
 syn keyword cssPositioningProp contained bottom clear clip display float left
 syn keyword cssPositioningProp contained position right top visibility
@@ -307,11 +303,47 @@ syn match cssTransformProp contained "\<backface-visibility\>"
 
 syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
 
-syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
-syn match cssUIProp contained "\<outline-offset\>"
+" Basic UI Reference: http://www.w3.org/TR/2003/WD-css3-ui-20030703/
+syn keyword cssUIProp contained appearance
+syn keyword cssUIAttr contained window button field icon document menubar
+syn keyword cssUIAttr contained workspace desktop tooltip dialog hyperlink
+syn match cssUIAttr contained "\<\(push-\|radio-\)\=button\>"
+syn match cssUIAttr contained "\<\(pull-down-\|pop-up-\|list-\)\=menu\>"
+syn match cssUIAttr contained "\<checkbox\(-group\)\=\>"
+syn match cssUIAttr contained "\<radio-group\>"
+syn match cssUIAttr contained "\<outline-tree\>"
+
 syn match cssUIProp contained "\<box-sizing\>"
-syn keyword cssUIProp contained appearance icon resize
-syn keyword cssUIAttr contained window button menu field
+syn match cssUIAttr contained "\<\(content\|padding\|border\)-box\>"
+
+syn keyword cssUIProp contained cursor
+syn match cssUIAttr contained "\<\(\([ns]\=[ew]\=\)\|col\|row\|nesw\|nwse\)-resize\>"
+syn keyword cssUIAttr contained crosshair help move pointer alias copy
+syn keyword cssUIAttr contained progress wait text cell move
+syn match cssUIAttr contained "\<context-menu\>"
+syn match cssUIAttr contained "\<no-drop\>"
+syn match cssUIAttr contained "\<not-allowed\>"
+syn match cssUIAttr contained "\<all-scroll\>"
+syn match cssUIAttr contained "\<\(vertical-\)\=text\>"
+syn match cssUIAttr contained "\<zoom\(-in\|-out\)\=\>"
+
+syn keyword cssUIProp contained font
+syn match cssUIAttr contained "\<status-bar\>"
+syn match cssUIAttr contained "\<message-box\>"
+syn match cssUIAttr contained "\<\(small-\)\=caption\>"
+
+syn match cssUIProp contained "\<key-equivalent\>"
+syn match cssUIAttr contained "\<list-item-marker\>"
+
+syn keyword cssUIProp contained icon display
+
+syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
+
+syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
+
+syn keyword cssUIProp contained resize
+syn keyword cssUIAttr contained both horizontal vertical 
+
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
 syn match cssAuralProp contained "\<\(play-during\|speech-rate\|voice-family\|pitch\(-range\)\=\|speak\(-\(punctuation\|numerals\)\)\=\)\>"
@@ -329,28 +361,26 @@ syn keyword cssAuralAttr contained faster slower
 syn keyword cssAuralAttr contained male female child code digits continuous
 syn match cssAuralAttr contained "\<lower\>"
 
-" cursor
-syn keyword cssUIProp contained cursor
-syn match cssUIAttr contained "\<[ns]\=[ew]\=-resize\>"
-syn keyword cssUIAttr contained crosshair help move pointer
-syn keyword cssUIAttr contained progress wait
-syn keyword cssUIAttr contained invert maker size zoom
+" mobile text
+syn match cssMobileTextProp contained "\<text-size-adjust\>"
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition
 syn match cssBraceError "}"
 
 " Pseudo class
-syn match cssPseudoClass ":[A-Za-z0-9_-]*" contains=cssPseudoClassId,cssUnicodeEscape
-syn keyword cssPseudoClassId link visited active hover focus before after left right lang
+syn match cssPseudoClass ":[A-Za-z0-9_-]*" contains=cssPseudoClassId,cssUnicodeEscape,cssVendor
+syn keyword cssPseudoClassId link visited active hover before after left right lang
 syn match cssPseudoClassId contained "\<first\(-\(line\|letter\|child\)\)\=\>"
 " FIXME: handle functions.
 "syn region cssPseudoClassLang matchgroup=cssPseudoClassId start="lang(" end=")"
 syn match cssPseudoClassId contained "\<\(last\|only\|nth\|nth-last\)-child\>"
 syn match cssPseudoClassId contained "\<\(first\|last\|only\|nth\|nth-last\)-of-type\>"
 syn keyword cssPseudoClassId root empty target enable disabled checked not invalid
-syn match cssPseudoClassId contained  "::\(-moz-\)\=selection"
+syn match cssPseudoClassId contained  "\<selection\>"
+syn match cssPseudoClassId contained  "\<focus\(-inner\)\=\>"
+syn match cssPseudoClassId contained  "\<\(input-\)\=placeholder\>"
 
 " Comment
 syn region cssComment start="/\*" end="\*/" contains=@Spell
@@ -365,6 +395,13 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
 
+" Attr Enhance
+" Some kewords are both Prop and Attr, so we have to handle them
+syn region cssAttrRegion start=/:/ end=/;/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp
+
+" Hack for transition
+" The 'transition' Prop has Props after ':'.
+syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp
 
 if main_syntax == "css"
   syn sync minlines=10
@@ -388,68 +425,66 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssSelectorOp Special
   HiLink cssSelectorOp2 Special
 
-  HiLink cssAnimationProp StorageClass
-  HiLink cssBackgroundProp StorageClass
-  HiLink cssBorderOutlineProp StorageClass
-  HiLink cssBoxProp StorageClass
-  HiLink cssColorProp StorageClass
-  HiLink cssContentForPagedMediaProp StorageClass
-  HiLink cssDimensionProp StorageClass
-  HiLink cssFlexibleBoxProp StorageClass
-  HiLink cssFontProp StorageClass
-  HiLink cssGeneratedContentProp StorageClass
-  HiLink cssGridProp StorageClass
-  HiLink cssHyerlinkProp StorageClass
-  HiLink cssLineboxProp StorageClass
-  HiLink cssListProp StorageClass
-  HiLink cssMarginProp StorageClass
-  HiLink cssMarqueeProp StorageClass
-  HiLink cssMultiColumnProp StorageClass
-  HiLink cssPaddingProp StorageClass
-  HiLink cssPagedMediaProp StorageClass
-  HiLink cssPositioningProp StorageClass
-  HiLink cssPrintProp StorageClass
-  HiLink cssRubyProp StorageClass
-  HiLink cssSpeechProp StorageClass
-  HiLink cssTableProp StorageClass
-  HiLink cssTextProp StorageClass
-  HiLink cssTransformProp StorageClass
-  HiLink cssTransitionProp StorageClass
-  HiLink cssUIProp StorageClass
-  HiLink cssAuralProp StorageClass
-  HiLink cssRenderProp StorageClass
+  HiLink cssAnimationProp cssProp
+  HiLink cssBackgroundProp cssProp
+  HiLink cssBorderOutlineProp cssProp
+  HiLink cssBoxProp cssProp
+  HiLink cssColorProp cssProp
+  HiLink cssContentForPagedMediaProp cssProp
+  HiLink cssDimensionProp cssProp
+  HiLink cssFlexibleBoxProp cssProp
+  HiLink cssFontProp cssProp
+  HiLink cssGeneratedContentProp cssProp
+  HiLink cssGridProp cssProp
+  HiLink cssHyerlinkProp cssProp
+  HiLink cssLineboxProp cssProp
+  HiLink cssListProp cssProp
+  HiLink cssMarqueeProp cssProp
+  HiLink cssMultiColumnProp cssProp
+  HiLink cssPagedMediaProp cssProp
+  HiLink cssPositioningProp cssProp
+  HiLink cssPrintProp cssProp
+  HiLink cssRubyProp cssProp
+  HiLink cssSpeechProp cssProp
+  HiLink cssTableProp cssProp
+  HiLink cssTextProp cssProp
+  HiLink cssTransformProp cssProp
+  HiLink cssTransitionProp cssProp
+  HiLink cssUIProp cssProp
+  HiLink cssAuralProp cssProp
+  HiLink cssRenderProp cssProp
+  HiLink cssMobileTextProp cssProp
 
-  HiLink cssAnimationAttr Type
-  HiLink cssBackgroundAttr Type
-  HiLink cssBorderOutlineAttr Type
-  HiLink cssBoxAttr Type
-  HiLink cssColorAttr Type
-  HiLink cssContentForPagedMediaAttr Type
-  HiLink cssDimensionAttr Type
-  HiLink cssFlexibleBoxAttr Type
-  HiLink cssFontAttr Type
-  HiLink cssGeneratedContentAttr Type
-  HiLink cssGridAttr Type
-  HiLink cssHyerlinkAttr Type
-  HiLink cssLineboxAttr Type
-  HiLink cssListAttr Type
-  HiLink cssMarginAttr Type
-  HiLink cssMarqueeAttr Type
-  HiLink cssMultiColumnAttr Type
-  HiLink cssPaddingAttr Type
-  HiLink cssPagedMediaAttr Type
-  HiLink cssPositioningAttr Type
-  HiLink cssPrintAttr Type
-  HiLink cssRubyAttr Type
-  HiLink cssSpeechAttr Type
-  HiLink cssTableAttr Type
-  HiLink cssTextAttr Type
-  HiLink cssTransformAttr Type
-  HiLink cssTransitionAttr Type
-  HiLink cssUIAttr Type
-  HiLink cssAuralAttr Type
-  HiLink cssRenderAttr Type
-  HiLink cssCommonAttr Type
+  HiLink cssAnimationAttr cssAttr
+  HiLink cssBackgroundAttr cssAttr
+  HiLink cssBorderOutlineAttr cssAttr
+  HiLink cssBoxAttr cssAttr
+  HiLink cssContentForPagedMediaAttr cssAttr
+  HiLink cssDimensionAttr cssAttr
+  HiLink cssFlexibleBoxAttr cssAttr
+  HiLink cssFontAttr cssAttr
+  HiLink cssGeneratedContentAttr cssAttr
+  HiLink cssGridAttr cssAttr
+  HiLink cssHyerlinkAttr cssAttr
+  HiLink cssLineboxAttr cssAttr
+  HiLink cssListAttr cssAttr
+  HiLink cssMarginAttr cssAttr
+  HiLink cssMarqueeAttr cssAttr
+  HiLink cssMultiColumnAttr cssAttr
+  HiLink cssPaddingAttr cssAttr
+  HiLink cssPagedMediaAttr cssAttr
+  HiLink cssPositioningAttr cssAttr
+  HiLink cssPrintAttr cssAttr
+  HiLink cssRubyAttr cssAttr
+  HiLink cssSpeechAttr cssAttr
+  HiLink cssTableAttr cssAttr
+  HiLink cssTextAttr cssAttr
+  HiLink cssTransformAttr cssAttr
+  HiLink cssTransitionAttr cssAttr
+  HiLink cssUIAttr cssAttr
+  HiLink cssAuralAttr cssAttr
+  HiLink cssRenderAttr cssAttr
+  HiLink cssCommonAttr cssAttr
 
   HiLink cssPseudoClassId PreProc
   HiLink cssPseudoClassLang Constant
@@ -479,19 +514,22 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssMediaFeature Normal
   HiLink cssMediaKeyword Statement
   HiLink cssMediaKeyword2 Statement
-  HiLink cssMediaProp StorageClass
-  HiLink cssMediaAttr Type
+  HiLink cssMediaProp cssProp
+  HiLink cssMediaAttr cssAttr
   HiLink cssPage Special
   HiLink cssPagePseudo PreProc
   HiLink cssPageHeaderProp PreProc
+  HiLink cssPageProp cssProp
   HiLink cssKeyFrame Special
   HiLink cssKeyFrameSelector Constant
   HiLink cssFontDescriptor Special
   HiLink cssFontDescriptorFunction Constant
-  HiLink cssFontDescriptorProp StorageClass
-  HiLink cssFontDescriptorAttr Type
+  HiLink cssFontDescriptorProp cssProp
+  HiLink cssFontDescriptorAttr cssAttr
   HiLink cssUnicodeRange Constant
   HiLink cssClassName Function
+  HiLink cssProp StorageClass
+  HiLink cssAttr Constant
   delcommand HiLink
 endif
 
