@@ -37,7 +37,7 @@ syn keyword cssTagName span strike strong style sub sup table tbody td
 syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
 syn keyword cssTagName object
 
-" 34 HTML5 tags 
+" 34 HTML5 tags
 syn keyword cssTagName article aside audio bdi canvas command data
 syn keyword cssTagName datalist details dialog embed figcaption figure footer
 syn keyword cssTagName header hgroup keygen main mark menuitem meter nav
@@ -75,12 +75,12 @@ syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
 
 " @media
 syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma,cssMediaKeyword2 skipwhite skipnl
-syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMadiaBlock
-syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr,cssVendor nextgroup=cssMediaFeature,cssMadiaBlock
+syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMediaBlock
+syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr,cssVendor nextgroup=cssMediaFeature,cssMediaBlock
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
 
-syn region cssMadiaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass
 syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaKeyword2 skipwhite skipnl
 
 " Reference: http://www.w3.org/TR/css3-mediaqueries/
@@ -342,7 +342,7 @@ syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
 
 syn keyword cssUIProp contained resize
-syn keyword cssUIAttr contained both horizontal vertical 
+syn keyword cssUIAttr contained both horizontal vertical
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
