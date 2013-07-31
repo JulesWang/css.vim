@@ -190,7 +190,7 @@ syn match cssAnimationAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
 syn match cssAnimationAttr contained "\<content\(-box\)\=\>"
 
 syn match cssBackgroundProp contained "\<background\(-\(color\|image\|attachment\|position\|clip\|origin\|size\|repeat\)\)\=\>"
-syn keyword cssBackgroundAttr contained fixed over contain
+syn keyword cssBackgroundAttr contained fixed over contain cover
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
 
