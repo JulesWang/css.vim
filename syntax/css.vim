@@ -71,9 +71,9 @@ endtry
 syn match cssValueInteger contained "[-+]\=\d\+"
 syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\="
 syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)" contains=cssUnits
-syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)"
-syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)"
-syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)"
+syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)" contains=cssUnits
+syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)" contains=cssUnits
+syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)" contains=cssUnits
 
 
 " @media
@@ -157,8 +157,8 @@ syn match cssImportant contained "!\s*important\>"
 
 syn match cssColor contained "\<transparent\>"
 syn match cssColor contained "\<white\>"
-syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>"
-syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>"
+syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>" contains=cssUnits
+syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>" contains=cssUnits
 
 syn match cssTransformProp contained "\<transform\(-\(origin\|style\)\)\=\>"
 syn match cssTransformProp contained "\<perspective\(-origin\)\=\>"
@@ -168,10 +168,10 @@ syn match cssTransformProp contained "\<backface-visibility\>"
 syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
 
 syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\)\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear\|radial\)-gradient\s*(" end=")" oneline keepend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y|\Z\)\=\|translate\(3d\|X\|Y|\Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y|\Z\)\=\|perspective\|gradient\)\s*(" end=")" oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\)\s*(" end=")" contains=cssNoisySymbols,cssValueLength,cssValueInteger,cssValueNumber,cssValueAngle oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" contains=cssNoisySymbols,cssValueLength,cssValueInteger,cssValueNumber,cssValueAngle  oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear\|radial\)-gradient\s*(" end=")" contains=cssNoisySymbols,cssValueLength,cssValueInteger,cssValueNumber,cssValueAngle oneline keepend
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y|\Z\)\=\|translate\(3d\|X\|Y|\Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y|\Z\)\=\|perspective\|gradient\)\s*(" end=")" contains=cssNoisySymbols,cssValueLength oneline keepend
 
 " Prop and Attr
 " Reference: http://www.w3schools.com/cssref/default.asp
@@ -367,8 +367,8 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|khtml\|moz\|o\|ms\)-\)"
 
-syntax match cssNoisySymbols /[\:\;]/ contained
-syntax match cssUnits /\(%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)/ contained
+syntax match cssNoisySymbols /[\:\;\,]/ contained
+syntax match cssUnits /\(#\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\)/ contained
 
 if main_syntax == "css"
   syn sync minlines=10
