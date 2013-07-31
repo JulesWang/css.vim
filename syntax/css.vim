@@ -160,6 +160,12 @@ syn match cssColor contained "\<white\>"
 syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>"
 syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>"
 
+syn match cssTransformProp contained "\<transform\(-\(origin\|style\)\)\=\>"
+syn match cssTransformProp contained "\<perspective\(-origin\)\=\>"
+syn match cssTransformProp contained "\<backface-visibility\>"
+
+syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
+
 syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\)\s*(" end=")" oneline keepend
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\)\s*(" end=")" oneline keepend
@@ -301,17 +307,11 @@ syn match cssTextAttr contained "\<break-word\>"
 syn keyword cssTextAttr contained hyphenate
 
 
-syn match cssTransformProp contained "\<transform\(-\(origin\|style\)\)\=\>"
-syn match cssTransformProp contained "\<perspective\(-origin\)\=\>"
-syn match cssTransformProp contained "\<backface-visibility\>"
-
-syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
-
 syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline-offset\>"
 syn match cssUIProp contained "\<box-sizing\>"
 syn keyword cssUIProp contained appearance icon resize
-syn match cssUIProp contained /\(interpolation-mode\|tap-highlight-color\)/
+syn match cssUIProp contained /\(interpolation-mode\|tap-highlight-color\|user-select\)/
 syn keyword cssUIAttr contained window button menu field
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
