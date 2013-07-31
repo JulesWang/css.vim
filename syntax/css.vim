@@ -327,7 +327,7 @@ syn match cssUIAttr contained "\<all-scroll\>"
 syn match cssUIAttr contained "\<\(vertical-\)\=text\>"
 syn match cssUIAttr contained "\<zoom\(-in\|-out\)\=\>"
 
-syn keyword cssUIProp contained font
+"syn keyword cssUIProp contained font
 syn match cssUIAttr contained "\<status-bar\>"
 syn match cssUIAttr contained "\<message-box\>"
 syn match cssUIAttr contained "\<\(small-\)\=caption\>"
