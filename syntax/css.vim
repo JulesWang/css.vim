@@ -376,6 +376,7 @@ syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
 syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition
 syn match cssBraceError "}"
+syn match cssAttrComma ","
 
 " Pseudo class
 syn match cssPseudoClass ":[A-Za-z0-9_-]*" contains=cssPseudoClassId,cssUnicodeEscape,cssVendor
@@ -407,11 +408,11 @@ syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|
 
 " Attr Enhance
 " Some kewords are both Prop and Attr, so we have to handle them
-syn region cssAttrRegion start=/:/ end=/;/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp
+syn region cssAttrRegion start=/:/ end=/;/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma
 
 " Hack for transition
 " The 'transition' Prop has Props after ':'.
-syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp
+syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma
 
 
 if main_syntax == "css"
@@ -435,6 +436,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssDeprecated Error
   HiLink cssSelectorOp Special
   HiLink cssSelectorOp2 Special
+  HiLink cssAttrComma Special
 
   HiLink cssAnimationProp cssProp
   HiLink cssBackgroundProp cssProp
