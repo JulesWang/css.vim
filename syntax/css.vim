@@ -476,15 +476,17 @@ syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
 " http://www.paulirish.com/2009/browser-specific-css-hacks/
 syn match cssHacks contained /\(_\|*\)/
 
+" Misc highlight groups
 syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
+syntax match cssNoise contained /\(:\|;\)/
 
 " Attr Enhance
 " Some kewords are both Prop and Attr, so we have to handle them
-syn region cssAttrRegion start=/:/ end=/;/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma
+syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma,cssNoise
 
 " Hack for transition
 " The 'transition' Prop has Props after ':'.
-syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma
+syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained keepend contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma,cssNoise
 
 
 if main_syntax == "css"
@@ -622,6 +624,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssProp StorageClass
   HiLink cssAttr Constant
   HiLink cssUnitDecorators Number
+  HiLink cssNoise Noise
   delcommand HiLink
 endif
 
