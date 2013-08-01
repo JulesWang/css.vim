@@ -14,9 +14,11 @@ if !exists("main_syntax")
   if version < 600
     syntax clear
   elseif exists("b:current_syntax")
-  finish
-endif
+    finish
+  endif
   let main_syntax = 'css'
+elseif exists("b:current_syntax") && b:current_syntax == "css"
+  finish
 endif
 
 let s:cpo_save = &cpo
