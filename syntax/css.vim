@@ -88,6 +88,7 @@ syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaKeyword2 skipwhite sk
 " Reference: http://www.w3.org/TR/css3-mediaqueries/
 syn keyword cssMediaProp contained width height orientation monochrome scan grid
 syn match cssMediaProp contained /\(\(device\)-\)\=aspect-ratio/
+syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-pixel-ratio/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-\(height\|width\)/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(height\|width\|resolution\|color\(-index\)\=\)/
 syn keyword cssMediaAttr contained portrait landscape progressive interlace
