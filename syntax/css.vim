@@ -35,7 +35,7 @@ syn keyword cssTagName link map menu meta noframes noscript ol optgroup
 syn keyword cssTagName option p param pre q s samp script select small
 syn keyword cssTagName span strike strong style sub sup table tbody td
 syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
-syn keyword cssTagName object
+syn keyword cssTagName object svg
 
 " 34 HTML5 tags
 syn keyword cssTagName article aside audio bdi canvas command data
@@ -220,14 +220,15 @@ syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>"
 syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
 
 
-syn match cssFontProp contained "\<font\(-\(family\|style\|variant\|weight\|size\(-adjust\)\=\|stretch\)\)\=\>"
-syn match cssFontAttr contained "\(\<sans\>\)"
+syn match cssFontProp contained "\<font\(-\(family\|style\|variant\|weight\|smoothing\|size\(-adjust\)\=\|stretch\)\)\=\>"
+syn match cssFontAttr contained "\<sans\>"
 syn match cssFontAttr contained "\<\(sans-\)\=\<serif\>"
 syn match cssFontAttr contained "\<small\(-\(caps\|caption\)\)\=\>"
 syn match cssFontAttr contained "\<x\{1,2\}-\(large\|small\)\>"
 syn match cssFontAttr contained "\<message-box\>"
 syn match cssFontAttr contained "\<status-bar\>"
 syn match cssFontAttr contained "\<\(\(ultra\|extra\|semi\|status-bar\)-\)\=\(condensed\|expanded\)\>"
+syn match cssFontAttr contained "\<\(subpixel-\)\=\antialiased\>"
 syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
 syn keyword cssFontAttr contained bold bolder light lighter larger smaller
 syn keyword cssFontAttr contained icon menu caption
@@ -275,7 +276,7 @@ syn keyword cssTableAttr contained fixed collapse separate show hide once always
 
 syn keyword cssTextProp contained color direction
 syn match cssTextProp "\<\(\(word\|letter\)-spacing\|text\(-\(decoration\|transform\|align\|index\|shadow\)\)\=\|vertical-align\|unicode-bidi\|line-height\)\>"
-syn match cssTextProp contained "\<text-\(justify\|\outline\|overflow\|warp\|align-last\)\>"
+syn match cssTextProp contained "\<text-\(justify\|\outline\|overflow\|warp\|align-last\|size-adjust\|rendering\|stroke\)\>"
 syn match cssTextProp contained "\<word-\(break\|\wrap\)\>"
 syn match cssTextProp contained "\<white-space\>"
 syn match cssTextProp contained "\<hanging-punctuation\>"
@@ -287,6 +288,7 @@ syn keyword cssTextAttr contained ltr rtl embed nowrap
 syn keyword cssTextAttr contained underline overline blink sub super middle
 syn keyword cssTextAttr contained capitalize uppercase lowercase
 syn keyword cssTextAttr contained justify baseline sub super
+syn keyword cssTextAttr contained optimizeLegibility optimizeSpeed
 syn match cssTextAttr contained "\<pre\(-\(line\|wrap\)\)\=\>"
 syn match cssTextAttr contained "\<\(allow\|force\)-end\>"
 syn keyword cssTextAttr contained start end adjacent
