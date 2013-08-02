@@ -21,6 +21,9 @@ elseif exists("b:current_syntax") && b:current_syntax == "css"
   finish
 endif
 
+" Required for cssHacks
+setlocal iskeyword-=_
+
 let s:cpo_save = &cpo
 set cpo&vim
 
@@ -82,7 +85,7 @@ syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl conta
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
 
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2,cssHacks
 syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaKeyword2 skipwhite skipnl contained
 
 " Reference: http://www.w3.org/TR/css3-mediaqueries/
@@ -374,7 +377,7 @@ syn match cssMobileTextProp contained "\<text-size-adjust\>"
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks
 syn match cssBraceError "}"
 
 " Pseudo class
@@ -402,6 +405,14 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 
 " Vendor Prefix
 syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
+
+" Various CSS Hack characters
+" In earlier versions of IE (6 and 7), one can prefix property names
+" with a _ or * to isolate those definitions to particular versions of IE
+" This is purely decorative and therefore we assign to the same highlight
+" group to cssVendor, for more information:
+" http://www.paulirish.com/2009/browser-specific-css-hacks/
+syn match cssHacks contained /\(_\|*\)/
 
 syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
 
@@ -431,6 +442,7 @@ if version >= 508 || !exists("did_css_syn_inits")
 
   HiLink cssComment Comment
   HiLink cssVendor Comment
+  HiLink cssHacks Comment
   HiLink cssTagName Statement
   HiLink cssDeprecated Error
   HiLink cssSelectorOp Special
