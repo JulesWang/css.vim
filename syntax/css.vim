@@ -407,6 +407,11 @@ syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEsca
 syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
 
 " Various CSS Hack characters
+" In earlier versions of IE (6 and 7), one can prefix property names
+" with a _ or * to isolate those definitions to particular versions of IE
+" This is purely decorative and therefore we assign to the same highlight
+" group to cssVendor, for more information:
+" http://www.paulirish.com/2009/browser-specific-css-hacks/
 syn match cssHacks contained /\(_\|*\)/
 
 syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
