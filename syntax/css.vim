@@ -373,7 +373,7 @@ syn match cssTransitionAttr contained "\<step\(-start\|-end\)\=\>"
 " CSS Basic User Interface Module Level 3 (CSS3 UI)
 " http://www.w3.org/TR/css3-ui/
 syn match cssUIProp contained "\<box-sizing\>"
-syn match cssUIAttr contained "\<\(content\|padding\|border\)-box\>"
+syn match cssUIAttr contained "\<\(content\|padding\|border\)\(-box\)\=\>"
 
 syn keyword cssUIProp contained cursor
 syn match cssUIAttr contained "\<\(\([ns]\=[ew]\=\)\|col\|row\|nesw\|nwse\)-resize\>"
