@@ -350,8 +350,11 @@ syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 
 syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
 
+syn match cssUIProp contained '\(tap-highlight-color\|user-select\)'
+
 syn keyword cssUIProp contained resize
 syn keyword cssUIAttr contained both horizontal vertical
+syn match cssUIAttr contained 'preserve-3d'
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
