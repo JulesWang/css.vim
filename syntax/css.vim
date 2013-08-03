@@ -353,7 +353,7 @@ syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
 syn keyword cssUIProp contained resize
 " Webkit/iOS specific properties
-syn match cssUIProp contained '\(tap-highlight-color\|user-select\)'
+syn match cssUIProp contained '\(tap-highlight-color\|user-select\|touch-callout\)'
 " IE specific properties
 syn match cssUIProp contained '\(interpolation-mode\|zoom\|filter\)'
 
