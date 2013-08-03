@@ -193,10 +193,9 @@ syn keyword cssBackgroundAttr contained fixed over contain
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
 
-syn match cssBorderOutlineProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\)\)\=\>"
+syn match cssBorderOutlineProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\|radius\)\)\=\>"
 syn match cssBorderOutlineProp contained "\<border-\(top\|bottom\)-\(left\|right\)\(-radius\)\=\>"
 syn match cssBorderOutlineProp contained "\<border-image\(-\(outset\|repeat\|slice\|source\|width\)\)\=\>"
-syn match cssBorderOutlineProp contained "\<border-radius\>"
 syn keyword cssBorderOutlineAttr contained thin thick medium
 syn keyword cssBorderOutlineAttr contained dotted dashed solid double groove ridge inset outset
 syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse round
@@ -267,11 +266,11 @@ syn match cssMultiColumnProp contained "\<column\(-\(\break-\(after\|before\)\|c
 syn keyword cssPositioningProp contained bottom clear clip display float left
 syn keyword cssPositioningProp contained position right top visibility
 syn match cssPositioningProp contained "\<z-index\>"
-syn keyword cssPositioningAttr contained block inline compact
+syn keyword cssPositioningAttr contained block compact
 syn match cssPositioningAttr contained "\<table\(-\(row-group\|\(header\|footer\)-group\|row\|column\(-group\)\=\|cell\|caption\)\)\=\>"
 syn keyword cssPositioningAttr contained left right both
 syn match cssPositioningAttr contained "\<list-item\>"
-syn match cssPositioningAttr contained "\<inline-\(block\|table\)\>"
+syn match cssPositioningAttr contained "\<inline\(\-block\|-box\)\=\>"
 syn keyword cssPositioningAttr contained static relative absolute fixed
 
 syn match cssPrintProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
