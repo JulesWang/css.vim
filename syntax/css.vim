@@ -478,7 +478,7 @@ syn match cssHacks contained /\(_\|*\)/
 
 " Misc highlight groups
 syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
-syntax match cssNoise contained /\(:\|;\)/
+syntax match cssNoise contained /\(:\|;\|\/\)/
 
 " Attr Enhance
 " Some kewords are both Prop and Attr, so we have to handle them
