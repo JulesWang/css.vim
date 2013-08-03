@@ -340,21 +340,22 @@ syn match cssUIAttr contained "\<zoom\(-in\|-out\)\=\>"
 syn match cssUIAttr contained "\<status-bar\>"
 syn match cssUIAttr contained "\<message-box\>"
 syn match cssUIAttr contained "\<\(small-\)\=caption\>"
+syn match cssUIAttr contained "\<list-item-marker\>"
+syn keyword cssUIAttr contained both horizontal vertical
+" Webkit/iOS specific attributes
+syn match cssUIAttr contained '\(preserve-3d\)'
+" IE specific attributes
+syn match cssUIAttr contained '\(bicubic\)'
 
 syn match cssUIProp contained "\<key-equivalent\>"
-syn match cssUIAttr contained "\<list-item-marker\>"
-
 syn keyword cssUIProp contained icon display
-
 syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
-
 syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
-
-syn match cssUIProp contained '\(tap-highlight-color\|user-select\)'
-
 syn keyword cssUIProp contained resize
-syn keyword cssUIAttr contained both horizontal vertical
-syn match cssUIAttr contained 'preserve-3d'
+" Webkit/iOS specific properties
+syn match cssUIProp contained '\(tap-highlight-color\|user-select\)'
+" IE specific properties
+syn match cssUIProp contained '\(interpolation-mode\|zoom\|filter\)'
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
