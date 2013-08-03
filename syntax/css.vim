@@ -283,13 +283,12 @@ syn keyword cssTableAttr contained fixed collapse separate show hide once always
 
 syn keyword cssTextProp contained color direction
 syn match cssTextProp "\<\(\(word\|letter\)-spacing\|text\(-\(decoration\|transform\|align\|index\|shadow\)\)\=\|vertical-align\|unicode-bidi\|line-height\)\>"
-syn match cssTextProp contained "\<text-\(justify\|\outline\|overflow\|warp\|align-last\|size-adjust\|rendering\|stroke\)\>"
+syn match cssTextProp contained "\<text-\(justify\|outline\|overflow\|warp\|align-last\|size-adjust\|rendering\|stroke\|indent\)\>"
 syn match cssTextProp contained "\<word-\(break\|\wrap\)\>"
 syn match cssTextProp contained "\<white-space\>"
 syn match cssTextProp contained "\<hanging-punctuation\>"
 syn match cssTextProp contained "\<punctuation-trim\>"
 syn match cssTextAttr contained "\<line-through\>"
-syn match cssTextAttr contained "\<text-indent\>"
 syn match cssTextAttr contained "\<\(text-\)\=\(top\|bottom\)\>"
 syn keyword cssTextAttr contained ltr rtl embed nowrap
 syn keyword cssTextAttr contained underline overline blink sub super middle
