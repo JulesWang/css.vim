@@ -345,7 +345,7 @@ syn keyword cssUIAttr contained both horizontal vertical
 " Webkit/iOS specific attributes
 syn match cssUIAttr contained '\(preserve-3d\)'
 " IE specific attributes
-syn match cssUIAttr contained '\(bicubic\)'
+syn match cssIEUIAttr contained '\(bicubic\)'
 
 syn match cssUIProp contained "\<key-equivalent\>"
 syn keyword cssUIProp contained icon display
@@ -355,7 +355,7 @@ syn keyword cssUIProp contained resize
 " Webkit/iOS specific properties
 syn match cssUIProp contained '\(tap-highlight-color\|user-select\|touch-callout\)'
 " IE specific properties
-syn match cssUIProp contained '\(interpolation-mode\|zoom\|filter\)'
+syn match cssIEUIProp contained '\(interpolation-mode\|zoom\|filter\)'
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
@@ -478,6 +478,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssTransformProp cssProp
   HiLink cssTransitionProp cssProp
   HiLink cssUIProp cssProp
+  HiLink cssIEUIProp cssProp
   HiLink cssAuralProp cssProp
   HiLink cssRenderProp cssProp
   HiLink cssMobileTextProp cssProp
@@ -510,6 +511,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssTransformAttr cssAttr
   HiLink cssTransitionAttr cssAttr
   HiLink cssUIAttr cssAttr
+  HiLink cssIEUIAttr cssAttr
   HiLink cssAuralAttr cssAttr
   HiLink cssRenderAttr cssAttr
   HiLink cssCommonAttr cssAttr
