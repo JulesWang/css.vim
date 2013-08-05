@@ -283,7 +283,7 @@ syn keyword cssTableAttr contained fixed collapse separate show hide once always
 
 syn keyword cssTextProp contained color direction
 syn match cssTextProp "\<\(\(word\|letter\)-spacing\|text\(-\(decoration\|transform\|align\|index\|shadow\)\)\=\|vertical-align\|unicode-bidi\|line-height\)\>"
-syn match cssTextProp contained "\<text-\(justify\|outline\|overflow\|warp\|align-last\|size-adjust\|rendering\|stroke\|indent\)\>"
+syn match cssTextProp contained "\<text-\(justify\|outline\|warp\|align-last\|size-adjust\|rendering\|stroke\|indent\)\>"
 syn match cssTextProp contained "\<word-\(break\|\wrap\)\>"
 syn match cssTextProp contained "\<white-space\>"
 syn match cssTextProp contained "\<hanging-punctuation\>"
@@ -312,15 +312,7 @@ syn match cssTransformProp contained "\<backface-visibility\>"
 
 syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
 
-" Basic UI Reference: http://www.w3.org/TR/2003/WD-css3-ui-20030703/
-syn keyword cssUIProp contained appearance
-syn keyword cssUIAttr contained window button field icon document menubar
-syn keyword cssUIAttr contained workspace desktop tooltip dialog hyperlink
-syn match cssUIAttr contained "\<\(push-\|radio-\)\=button\>"
-syn match cssUIAttr contained "\<\(pull-down-\|pop-up-\|list-\)\=menu\>"
-syn match cssUIAttr contained "\<checkbox\(-group\)\=\>"
-syn match cssUIAttr contained "\<radio-group\>"
-syn match cssUIAttr contained "\<outline-tree\>"
+" css3 UI Reference: http://www.w3.org/TR/css3-ui/
 
 syn match cssUIProp contained "\<box-sizing\>"
 syn match cssUIAttr contained "\<\(content\|padding\|border\)-box\>"
@@ -336,26 +328,35 @@ syn match cssUIAttr contained "\<all-scroll\>"
 syn match cssUIAttr contained "\<\(vertical-\)\=text\>"
 syn match cssUIAttr contained "\<zoom\(-in\|-out\)\=\>"
 
-"syn keyword cssUIProp contained font
-syn match cssUIAttr contained "\<status-bar\>"
-syn match cssUIAttr contained "\<message-box\>"
-syn match cssUIAttr contained "\<\(small-\)\=caption\>"
-syn match cssUIAttr contained "\<list-item-marker\>"
+syn match cssUIProp contained "\<ime-mode\>"
+syn keyword cssUIAttr contained active inactive disabled
+
+syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
+syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
+
+syn keyword cssUIProp contained icon resiz
 syn keyword cssUIAttr contained both horizontal vertical
+
+syn match cssUIProp contained "\<text-overflow\>"
+syn keyword cssUIAttr contained clip ellipsis
+
+" Already highlighted Props:  font content
+
+
+
 " Webkit/iOS specific attributes
 syn match cssUIAttr contained '\(preserve-3d\)'
 " IE specific attributes
 syn match cssIEUIAttr contained '\(bicubic\)'
 
-syn match cssUIProp contained "\<key-equivalent\>"
-syn keyword cssUIProp contained icon display
-syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
-syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
-syn keyword cssUIProp contained resize
 " Webkit/iOS specific properties
 syn match cssUIProp contained '\(tap-highlight-color\|user-select\|touch-callout\)'
 " IE specific properties
 syn match cssIEUIProp contained '\(interpolation-mode\|zoom\|filter\)'
+
+" Webkit/Firebox specific properties/attributes
+syn keyword cssUIProp contained appearance
+syn keyword cssUIAttr contained window button field icon document menu
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
