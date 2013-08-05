@@ -58,7 +58,7 @@ syn match cssTagName "\*"
 " selectors
 syn match cssSelectorOp "[,>+]"
 syn match cssSelectorOp2 "[~|^$*]\?=" contained
-syn region cssAttributeSelector matchgroup=cssSelectorOp start="\[" end="]" transparent contains=cssUnicodeEscape,cssSelectorOp2,cssStringQ,cssStringQQ
+syn region cssAttributeSelector matchgroup=cssSelectorOp start="\[" end="]" contains=cssUnicodeEscape,cssSelectorOp2,cssStringQ,cssStringQQ
 
 " .class and #id
 syn match cssClassName "\.[A-Za-z][A-Za-z0-9_-]\+"
@@ -533,6 +533,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssUnicodeEscape Special
   HiLink cssStringQQ String
   HiLink cssStringQ String
+  HiLink cssAttributeSelector String
   HiLink cssMedia Special
   HiLink cssMediaType Special
   HiLink cssMediaComma Normal
