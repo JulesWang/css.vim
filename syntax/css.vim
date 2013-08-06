@@ -175,30 +175,63 @@ syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3
 syn keyword cssGradientAttr contained top bottom left right cover center middle ellipse at
 syn match cssFunctionComma contained ","
 
-" Prop and Attr
+" Common Prop and Attr
 syn keyword cssCommonAttr contained auto none inherit all default normal
 syn keyword cssCommonAttr contained top bottom center stretch hidden visible
+"------------------------------------------------
+" CSS Animations
+" http://www.w3.org/TR/css3-animations/
+syn match cssAnimationProp contained "\<animation\(-\(delay\|direction\|duration\|fill-mode\|name\|play-state\|timing-function\)\)\=\>"
 
-syn match cssAnimationProp contained "\<animation\(-\(name\|duration\|timing-function\|delay\|iteration-cout\|play-state\)\)\=\>"
-
-syn keyword cssAnimationAttr contained infinite alternate paused running
+" animation-direction attributes
+syn keyword cssAnimationAttr contained alternate reverse
 syn match cssAnimationAttr contained "\<alternate-reverse\>"
+
+" animation-fill-mode attributes
+syn keyword cssAnimationAttr contained forwards backwards both
+
+" animation-play-state attributes
+syn keyword cssAnimationAttr contained running paused
+
+" animation-time-function attributes
 syn match cssAnimationAttr contained "\<linear\(-gradient\)\@!\>"
 syn match cssAnimationAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
-syn match cssAnimationAttr contained "\<content\(-box\)\=\>"
-syn match cssAnimationAttr contained "\<border-box\>"
+"------------------------------------------------
+"  CSS Backgrounds and Borders Module Level 3
+"  http://www.w3.org/TR/css3-background/
+syn match cssBackgroundProp contained "\<background\(-\(attachment\|clip\|color\|image\|origin\|position\|repeat\|size\)\)\=\>"
+" background-attachment attributes
+syn keyword cssBackgroundAttr contained scroll fixed local
 
-syn match cssBackgroundProp contained "\<background\(-\(color\|image\|repeat\|attachment\|position\|clip\|origin\|size\)\)\=\>"
-syn keyword cssBackgroundAttr contained fixed over contain
+" background-position attributes
+syn keyword cssBackgroundAttr contained left center right top bottom
+
+" background-repeat attributes
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
+syn keyword cssBackgroundAttr contained space round
 
-syn match cssBorderOutlineProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\|radius\)\)\=\>"
-syn match cssBorderOutlineProp contained "\<border-\(top\|bottom\)-\(left\|right\)\(-radius\)\=\>"
-syn match cssBorderOutlineProp contained "\<border-image\(-\(outset\|repeat\|slice\|source\|width\)\)\=\>"
-syn keyword cssBorderOutlineAttr contained thin thick medium
-syn keyword cssBorderOutlineAttr contained dotted dashed solid double groove ridge inset outset
-syn keyword cssBorderOutlineAttr contained hidden visible scroll collapse round
+" background-size attributes
+syn keyword cssBackgroundAttr contained cover contain
+
+syn match cssBorderProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\)\)\=\>"
+syn match cssBorderProp contained "\<border\(-\(top\|bottom\)-\(left\|right\)\)\=-radius\>"
+syn match cssBorderProp contained "\<border-image\(-\(outset\|repeat\|slice\|source\|width\)\)\=\>"
+syn match cssBorderProp contained "\<box-decoration-break\>"
+syn match cssBorderProp contained "\<box-shadow\>"
+
+" border-image attributes
+syn keyword cssBorderAttr contained stretch repeat round space fill
+
+" border-style attributes
+syn keyword cssBorderAttr contained dotted dashed solid double groove ridge inset outset
+
+" border-width attributes
+syn keyword cssBorderAttr contained thin thick medium
+
+" box-decoration-break attributes
+syn keyword cssBorderAttr contained clone slice
+"------------------------------------------------
 
 syn match cssBoxProp contained "\<padding\(-\(top\|right\|bottom\|left\)\)\=\>"
 syn match cssBoxProp contained "\<margin\(-\(top\|right\|bottom\|left\)\)\=\>"
@@ -312,8 +345,8 @@ syn match cssTransformProp contained "\<backface-visibility\>"
 
 syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
 
-" css3 UI Reference: http://www.w3.org/TR/css3-ui/
-
+" CSS Basic User Interface Module Level 3 (CSS3 UI)
+" http://www.w3.org/TR/css3-ui/
 syn match cssUIProp contained "\<box-sizing\>"
 syn match cssUIAttr contained "\<\(content\|padding\|border\)-box\>"
 
@@ -455,7 +488,7 @@ if version >= 508 || !exists("did_css_syn_inits")
 
   HiLink cssAnimationProp cssProp
   HiLink cssBackgroundProp cssProp
-  HiLink cssBorderOutlineProp cssProp
+  HiLink cssBorderProp cssProp
   HiLink cssBoxProp cssProp
   HiLink cssColorProp cssProp
   HiLink cssContentForPagedMediaProp cssProp
@@ -486,7 +519,7 @@ if version >= 508 || !exists("did_css_syn_inits")
 
   HiLink cssAnimationAttr cssAttr
   HiLink cssBackgroundAttr cssAttr
-  HiLink cssBorderOutlineAttr cssAttr
+  HiLink cssBorderAttr cssAttr
   HiLink cssBoxAttr cssAttr
   HiLink cssContentForPagedMediaAttr cssAttr
   HiLink cssDimensionAttr cssAttr
