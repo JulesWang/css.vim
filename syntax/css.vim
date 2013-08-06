@@ -113,10 +113,13 @@ syn region cssInclude start=/@charset\>/ end=/\ze;/ contains=cssStringQ,cssStrin
 syn region cssInclude start=/@namespace\>/ end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment
 
 " @font-face
+" http://www.w3.org/TR/css3-fonts/#at-font-face-rule
 syn match cssFontDescriptor "@font-face\>" nextgroup=cssFontDescriptorBlock skipwhite skipnl
 syn region cssFontDescriptorBlock contained transparent matchgroup=cssBraces start="{" end="}" contains=cssComment,cssError,cssUnicodeEscape,cssFontProp,cssFontAttr,cssCommonAttr,cssStringQ,cssStringQQ,cssFontDescriptorProp,cssValue.*,cssFontDescriptorFunction,cssUnicodeRange,cssFontDescriptorAttr
-syn match cssFontDescriptorProp contained "\<\(unicode-range\|unit-per-em\|panose-1\|cap-height\|x-height\|definition-src\)\>"
-syn keyword cssFontDescriptorProp contained src stemv stemh slope ascent descent widths bbox baseline centerline mathline topline
+"syn match cssFontDescriptorProp contained "\<\(unicode-range\|unit-per-em\|panose-1\|cap-height\|x-height\|definition-src\)\>"
+"syn keyword cssFontDescriptorProp contained src stemv stemh slope ascent descent widths bbox baseline centerline mathline topline
+syn keyword cssFontDescriptorProp contained src
+syn match cssFontDescriptorProp contained "\<unicode-range\>"
 syn keyword cssFontDescriptorAttr contained all
 syn region cssFontDescriptorFunction contained matchgroup=cssFunctionName start="\<\(uri\|url\|local\|format\)\s*(" end=")" contains=cssStringQ,cssStringQQ oneline keepend
 syn match cssUnicodeRange contained "U+[0-9A-Fa-f?]\+"
@@ -255,22 +258,42 @@ syn keyword cssFlexibleBoxAttr contained horizontal
 syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>"
 syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
 
-
-syn match cssFontProp contained "\<font\(-\(family\|style\|variant\|weight\|smoothing\|size\(-adjust\)\=\|stretch\)\)\=\>"
-syn match cssFontAttr contained "\<sans\>"
-syn match cssFontAttr contained "\<\(sans-\)\=\<serif\>"
+" CSS Fonts Module Level 3
+" http://www.w3.org/TR/css-fonts-3/
+syn match cssFontProp contained "\<font\(-\(family\|\|feature-settings\|kerning\|language-override\|size\(-adjust\)\=\|stretch\|style\|synthesis\|variant\(-\(alternates\|caps\|east-asian\|ligatures\|numeric\|position\)\)\=\|weight\)\)\=\>"
+" font attributes
+syn keyword cssFontAttr contained icon menu caption
 syn match cssFontAttr contained "\<small\(-\(caps\|caption\)\)\=\>"
-syn match cssFontAttr contained "\<x\{1,2\}-\(large\|small\)\>"
 syn match cssFontAttr contained "\<message-box\>"
 syn match cssFontAttr contained "\<status-bar\>"
-syn match cssFontAttr contained "\<\(\(ultra\|extra\|semi\|status-bar\)-\)\=\(condensed\|expanded\)\>"
-syn match cssFontAttr contained "\<\(subpixel-\)\=\antialiased\>"
-syn keyword cssFontAttr contained cursive fantasy monospace italic oblique
-syn keyword cssFontAttr contained bold bolder light lighter larger smaller
-syn keyword cssFontAttr contained icon menu caption
-syn keyword cssFontAttr contained large smaller larger narrower wider
-syn keyword cssFontAttr contained Antiqua Arial Black Book Charcoal Comic Courier Dingbats Gadget Geneva Georgia Grande Helvetica Impact Linotype Lucida MS Monaco Neue New Palatino Roboto Roman Symbol Tahoma Times Trebuchet Unicode Verdana Webdings Wingdings York Zapf
+syn match cssFontAttr contained "\<x\{1,2\}-\(large\|small\)\>"
 
+" font-family attributes
+syn match cssFontAttr contained "\<sans\>"
+syn match cssFontAttr contained "\<\(sans-\)\=\<serif\>"
+syn keyword cssFontAttr contained Antiqua Arial Black Book Charcoal Comic Courier Dingbats Gadget Geneva Georgia Grande Helvetica Impact Linotype Lucida MS Monaco Neue New Palatino Roboto Roman Symbol Tahoma Times Trebuchet Unicode Verdana Webdings Wingdings York Zapf
+syn keyword cssFontAttr contained cursive fantasy monospace
+
+" font-feature-settings attributes
+syn keyword cssFontAttr contained on off
+
+" font-stretch attributes
+syn match cssFontAttr contained "\<\(\(ultra\|extra\|semi\)-\)\=\(condensed\|expanded\)\>"
+
+" font-style attributes
+syn keyword cssFontAttr contained italic oblique
+
+" font-variant-caps attributes
+syn match cssFontAttr contained "\<\(all-\)\=\(small-\|petite-\|titling-\)caps\>"
+syn keyword cssFontAttr contained unicase
+
+" font-weight attributes
+syn keyword cssFontAttr contained bold bolder lighter
+"------------------------------------------------
+
+" Webkit specific property/attributes
+syn match cssFontProp contained "\<font-smooth\>"
+syn match cssFontAttr contained "\<\(subpixel-\)\=\antialiased\>"
 
 syn keyword cssGeneratedContentProp contained quotes crop
 syn match cssGeneratedContentProp contained "\<counter-\(reset\|increment\)\>"
@@ -410,6 +433,8 @@ syn match cssAuralAttr contained "\<lower\>"
 
 " mobile text
 syn match cssMobileTextProp contained "\<text-size-adjust\>"
+
+
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
