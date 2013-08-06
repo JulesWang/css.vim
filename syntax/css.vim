@@ -168,7 +168,7 @@ syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>" contains=cssUnitDecorators
 syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>" contains=cssUnitDecorators
 
 syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline extend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\)\s*(" end=")" oneline  contains=cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\|steps\)\s*(" end=")" oneline  contains=cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\|color-stop\|from\|to\)\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma,cssFunction
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear-\|radial-\)\=\gradient\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunction,cssGradientAttr,cssFunctionComma
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y\|Z\)\=\|translate\(3d\|X\|Y\|Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y\|Z\)\=\|perspective\)\s*(" end=")" oneline contains=cssValueInteger,cssValueNumber,cssValueLength,cssValueAngle,cssFunctionComma
@@ -192,10 +192,6 @@ syn keyword cssAnimationAttr contained forwards backwards both
 
 " animation-play-state attributes
 syn keyword cssAnimationAttr contained running paused
-
-" animation-time-function attributes
-syn match cssAnimationAttr contained "\<linear\(-gradient\)\@!\>"
-syn match cssAnimationAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
 "------------------------------------------------
 "  CSS Backgrounds and Borders Module Level 3
 "  http://www.w3.org/TR/css3-background/
@@ -338,13 +334,19 @@ syn match cssTextAttr contained "\<break-all\>"
 syn match cssTextAttr contained "\<break-word\>"
 syn keyword cssTextAttr contained hyphenate
 
-
 syn match cssTransformProp contained "\<transform\(-\(origin\|style\)\)\=\>"
 syn match cssTransformProp contained "\<perspective\(-origin\)\=\>"
 syn match cssTransformProp contained "\<backface-visibility\>"
 
+" CSS Transitions
+" http://www.w3.org/TR/css3-transitions/
 syn match cssTransitionProp contained "\<transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>"
 
+" transition-time-function attributes
+syn match cssTransitionAttr contained "\<linear\(-gradient\)\@!\>"
+syn match cssTransitionAttr contained "\<ease\(-\(in-out\|out\|in\)\)\=\>"
+syn match cssTransitionAttr contained "\<step\(-start\|-end\)\=\>"
+"------------------------------------------------
 " CSS Basic User Interface Module Level 3 (CSS3 UI)
 " http://www.w3.org/TR/css3-ui/
 syn match cssUIProp contained "\<box-sizing\>"
@@ -374,9 +376,7 @@ syn match cssUIProp contained "\<text-overflow\>"
 syn keyword cssUIAttr contained clip ellipsis
 
 " Already highlighted Props:  font content
-
-
-
+"------------------------------------------------
 " Webkit/iOS specific attributes
 syn match cssUIAttr contained '\(preserve-3d\)'
 " IE specific attributes
