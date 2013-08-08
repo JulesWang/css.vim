@@ -85,7 +85,7 @@ syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl conta
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
 
-syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2,cssHacks
+syn region cssMediaBlock transparent matchgroup=cssBraces start='{' end='}' contains=css.*Attr,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssTagName,cssClassName,cssIdentifier,cssPseudoClass,cssSelectorOp,cssSelectorOp2,cssAttributeSelector
 syn match cssMediaComma "," nextgroup=cssMediaType,cssMediaKeyword2 skipwhite skipnl contained
 
 " Reference: http://www.w3.org/TR/css3-mediaqueries/
