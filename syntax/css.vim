@@ -438,7 +438,7 @@ syn match cssMobileTextProp contained "\<text-size-adjust\>"
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks keepend
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,cssAttrRegionAnim,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks keepend
 syn match cssBraceError "}"
 syn match cssAttrComma ","
 
@@ -482,12 +482,14 @@ syntax match cssNoise contained /\(:\|;\|\/\)/
 
 " Attr Enhance
 " Some kewords are both Prop and Attr, so we have to handle them
-syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma,cssNoise
+syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
 
-" Hack for transition
+" Hack for transitions and animations
 " The 'transition' Prop has Props after ':'.
-syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained keepend contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma,cssNoise
-
+syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained keepend    contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
+" Animations names can be almost any type of string
+" therefore we attach them to the cssAttr group
+syn region cssAttrRegionAnim start=/animation\s*:/ end=/;/ contained keepend contains=cssAnimationProp,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
 
 if main_syntax == "css"
   syn sync minlines=10
@@ -576,6 +578,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssAuralAttr cssAttr
   HiLink cssRenderAttr cssAttr
   HiLink cssCommonAttr cssAttr
+  HiLink cssAttrRegionAnim cssAttr
 
   HiLink cssPseudoClassId PreProc
   HiLink cssPseudoClassLang Constant
