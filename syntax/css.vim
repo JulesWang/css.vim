@@ -6,7 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
 " URL:          https://github.com/JulesWang/css.vim
-" Last Change:  2013 July 31
+" Last Change:  2013 Aug 28
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -56,7 +56,7 @@ syn keyword cssDeprecated font frame frameset noframes strike tt
 syn match cssTagName "\*"
 
 " selectors
-syn match cssSelectorOp "[,>+]"
+syn match cssSelectorOp "[,>+~]"
 syn match cssSelectorOp2 "[~|^$*]\?=" contained
 syn region cssAttributeSelector matchgroup=cssSelectorOp start="\[" end="]" contains=cssUnicodeEscape,cssSelectorOp2,cssStringQ,cssStringQQ
 
@@ -443,17 +443,19 @@ syn match cssBraceError "}"
 syn match cssAttrComma ","
 
 " Pseudo class
-syn match cssPseudoClass ":[A-Za-z0-9_-]*" contains=cssPseudoClassId,cssUnicodeEscape,cssVendor
-syn keyword cssPseudoClassId link visited active hover before after left right lang
-syn match cssPseudoClassId contained "\<first\(-\(line\|letter\|child\)\)\=\>"
-" FIXME: handle functions.
-"syn region cssPseudoClassLang matchgroup=cssPseudoClassId start="lang(" end=")"
-syn match cssPseudoClassId contained "\<\(last\|only\|nth\|nth-last\)-child\>"
-syn match cssPseudoClassId contained "\<\(first\|last\|only\|nth\|nth-last\)-of-type\>"
-syn keyword cssPseudoClassId root empty target enable disabled checked not invalid
+" http://www.w3.org/TR/css3-selectors/
+syn match cssPseudoClass ":[A-Za-z0-9_-]*" contains=cssNoise,cssPseudoClassId,cssUnicodeEscape,cssVendor,cssPseudoClassFn
+syn keyword cssPseudoClassId contained link visited active hover before after left right
+syn keyword cssPseudoClassId contained root empty target enable disabled checked invalid
+syn match cssPseudoClassId contained "\<first-\(line\|letter\)\>"
+syn match cssPseudoClassId contained "\<\(first\|last\|only\)-\(of-type\|child\)\>"
+syn region cssPseudoClassFn contained matchgroup=cssFunctionName start="\<\(not\|lang\|\(nth\|nth-last\)-\(of-type\|child\)\)(" end=")"
+" ------------------------------------
+" Vendor specific properties
 syn match cssPseudoClassId contained  "\<selection\>"
 syn match cssPseudoClassId contained  "\<focus\(-inner\)\=\>"
 syn match cssPseudoClassId contained  "\<\(input-\)\=placeholder\>"
+
 
 " Comment
 syn region cssComment start="/\*" end="\*/" contains=@Spell
