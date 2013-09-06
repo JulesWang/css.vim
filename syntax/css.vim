@@ -80,7 +80,7 @@ syn match cssValueFrequency contained "+\=\d\+\(\.\d*\)\=\(Hz\|kHz\)" contains=c
 
 " @media
 syn match cssMedia "@media\>"  nextgroup=cssMediaType,cssMediaFeature,cssMediaBlock,cssMediaComma,cssMediaKeyword2 skipwhite skipnl
-syn keyword cssMediaType contained screen print aural braile embosed handheld projection ty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMediaBlock
+syn keyword cssMediaType contained screen print aural braille embossed handheld projection tty tv all contained skipwhite skipnl nextgroup=cssMediaFeature,cssMediaBlock
 syn match cssMediaFeature /\(and\)\=\s*(.\{-})/ contained skipwhite skipnl contains=cssMediaProp,cssValueLength,cssMediaKeyword,cssValueInteger,cssMediaAttr,cssVendor nextgroup=cssMediaFeature,cssMediaBlock,cssMediaComma
 syn keyword cssMediaKeyword and contained
 syn keyword cssMediaKeyword2 only not contained nextgroup=cssMediaType skipwhite skipnl
@@ -263,14 +263,14 @@ syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
 syn match cssFontProp contained "\<font\(-\(family\|\|feature-settings\|kerning\|language-override\|size\(-adjust\)\=\|stretch\|style\|synthesis\|variant\(-\(alternates\|caps\|east-asian\|ligatures\|numeric\|position\)\)\=\|weight\)\)\=\>"
 " font attributes
 syn keyword cssFontAttr contained icon menu caption
-syn match cssFontAttr contained "\<small\(-\(caps\|caption\)\)\=\>"
+syn match cssFontAttr contained "\<small-\(caps\|caption\)\>"
 syn match cssFontAttr contained "\<message-box\>"
 syn match cssFontAttr contained "\<status-bar\>"
-syn match cssFontAttr contained "\<x\{1,2\}-\(large\|small\)\>"
+syn keyword cssFontAttr contained larger smaller
+syn match cssFontAttr contained "\<\(x\{1,2\}-\)\=\(large\|small\)\>"
 
 " font-family attributes
-syn match cssFontAttr contained "\<sans\>"
-syn match cssFontAttr contained "\<\(sans-\)\=\<serif\>"
+syn match cssFontAttr contained "\<\(sans-\)\=serif\>"
 syn keyword cssFontAttr contained Antiqua Arial Black Book Charcoal Comic Courier Dingbats Gadget Geneva Georgia Grande Helvetica Impact Linotype Lucida MS Monaco Neue New Palatino Roboto Roman Symbol Tahoma Times Trebuchet Unicode Verdana Webdings Wingdings York Zapf
 syn keyword cssFontAttr contained cursive fantasy monospace
 
@@ -322,7 +322,7 @@ syn keyword cssPositioningAttr contained block compact
 syn match cssPositioningAttr contained "\<table\(-\(row-group\|\(header\|footer\)-group\|row\|column\(-group\)\=\|cell\|caption\)\)\=\>"
 syn keyword cssPositioningAttr contained left right both
 syn match cssPositioningAttr contained "\<list-item\>"
-syn match cssPositioningAttr contained "\<inline\(\-block\|-box\)\=\>"
+syn match cssPositioningAttr contained "\<inline\(-\(block\|box\|table\)\)\=\>"
 syn keyword cssPositioningAttr contained static relative absolute fixed
 
 syn match cssPrintProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
@@ -356,6 +356,7 @@ syn keyword cssTextAttr contained clip ellipsis unrestricted suppress
 syn match cssTextAttr contained "\<break-all\>"
 syn match cssTextAttr contained "\<break-word\>"
 syn keyword cssTextAttr contained hyphenate
+syn match cssTextAttr contained "\<bidi-override\>"
 
 syn match cssTransformProp contained "\<transform\(-\(origin\|style\)\)\=\>"
 syn match cssTransformProp contained "\<perspective\(-origin\)\=\>"
@@ -391,8 +392,9 @@ syn keyword cssUIAttr contained active inactive disabled
 
 syn match cssUIProp contained "\<nav-\(down\|index\|left\|right\|up\)\=\>"
 syn match cssUIProp contained "\<outline\(-\(width\|style\|color\|offset\)\)\=\>"
+syn keyword cssUIAttr contained invert
 
-syn keyword cssUIProp contained icon resiz
+syn keyword cssUIProp contained icon resize
 syn keyword cssUIAttr contained both horizontal vertical
 
 syn match cssUIProp contained "\<text-overflow\>"
@@ -416,7 +418,7 @@ syn keyword cssUIAttr contained window button field icon document menu
 
 
 syn match cssAuralProp contained "\<\(pause\|cue\)\(-\(before\|after\)\)\=\>"
-syn match cssAuralProp contained "\<\(play-during\|speech-rate\|voice-family\|pitch\(-range\)\=\|speak\(-\(punctuation\|numerals\)\)\=\)\>"
+syn match cssAuralProp contained "\<\(play-during\|speech-rate\|voice-family\|pitch\(-range\)\=\|speak\(-\(punctuation\|numeral\|header\)\)\=\)\>"
 syn keyword cssAuralProp contained volume during azimuth elevation stress richness
 syn match cssAuralAttr contained "\<\(x-\)\=\(soft\|loud\)\>"
 syn keyword cssAuralAttr contained silent
@@ -425,11 +427,10 @@ syn keyword cssAuralAttr contained non mix
 syn match cssAuralAttr contained "\<\(left\|right\)-side\>"
 syn match cssAuralAttr contained "\<\(far\|center\)-\(left\|center\|right\)\>"
 syn keyword cssAuralAttr contained leftwards rightwards behind
-syn keyword cssAuralAttr contained below level above higher
-syn match cssAuralAttr contained "\<\(x-\)\=\(slow\|fast\)\>"
+syn keyword cssAuralAttr contained below level above lower higher
+syn match cssAuralAttr contained "\<\(x-\)\=\(slow\|fast\|low\|high\)\>"
 syn keyword cssAuralAttr contained faster slower
 syn keyword cssAuralAttr contained male female child code digits continuous
-syn match cssAuralAttr contained "\<lower\>"
 
 " mobile text
 syn match cssMobileTextProp contained "\<text-size-adjust\>"
