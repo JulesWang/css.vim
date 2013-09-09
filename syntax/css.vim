@@ -460,7 +460,6 @@ syn match cssPseudoClassId contained  "\<\(input-\)\=placeholder\>"
 
 " Comment
 syn region cssComment start="/\*" end="\*/" contains=@Spell
-syn region cssComment start="//" skip="\\$" end="$" keepend contains=@Spell
 
 syn match cssUnicodeEscape "\\\x\{1,6}\s\?"
 syn match cssSpecialCharQQ +\\"+ contained
