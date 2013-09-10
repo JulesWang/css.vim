@@ -156,7 +156,7 @@ syn keyword cssColor contained slategray slategrey snow springgreen steelblue ta
 syn keyword cssColor contained thistle tomato turquoise violet wheat
 syn keyword cssColor contained whitesmoke yellowgreen
 
-" FIXME: These are actually case-insentivie too, but (a) specs recommend using
+" FIXME: These are actually case-insensitive too, but (a) specs recommend using
 " mixed-case (b) it's hard to highlight the word `Background' correctly in
 " all situations
 syn case match
@@ -254,8 +254,7 @@ syn keyword cssFlexibleBoxAttr contained start end baseline
 syn keyword cssFlexibleBoxAttr contained reverse
 syn keyword cssFlexibleBoxAttr contained single mulitple
 syn keyword cssFlexibleBoxAttr contained horizontal
-" bugfix: escape vertial-align
-syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>"
+syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>" "escape vertical-align
 syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
 
 " CSS Fonts Module Level 3
@@ -483,7 +482,7 @@ syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|
 syntax match cssNoise contained /\(:\|;\|\/\)/
 
 " Attr Enhance
-" Some kewords are both Prop and Attr, so we have to handle them
+" Some keywords are both Prop and Attr, so we have to handle them
 syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssTransitionHackProp,cssAttrComma,cssNoise
 
 " Hack for transition
