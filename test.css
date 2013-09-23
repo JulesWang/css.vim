@@ -1,0 +1,67 @@
+/* @media tests*/
+@media screen {
+  * { font-family: sans-serif }
+}
+
+
+@import url(color.css) screen and (color);
+
+@media all and (min-width:500px) {}
+@media (min-width:500px) {}
+
+@media (orientation: portrait) {}
+@media all and (orientation: portrait) {}
+
+@media screen and (color), projection and (color) {}
+
+@media all {}
+@media {}
+
+@import url(example.css) screen and (color), projection and (color);
+@import "example.css" screen and (color), projection and (color);
+
+@media screen and (color), projection and (color) {}
+@media aural and (device-aspect-ratio: 16/9) {}
+@media speech and (min-device-width: 800px) {}
+
+@media all { body { background:lime } }
+@media print and (min-width: 25cm) {}
+@media screen and (min-width: 400px) and (max-width: 700px) {}
+@media handheld and (min-width: 20em),
+screen and (min-width: 20em) {}
+
+@media screen and (device-width: 800px) {}
+@media all and (orientation:portrait) {}
+@media all and (orientation:landscape) {}
+
+@media screen and (device-aspect-ratio: 16/9) {}
+
+@media all and (color) {}
+@media all and (min-color: 1) {}
+@media all and (color-index) {}
+@media all and (min-color-index: 1) {}
+@media all and (monochrome) {}
+@media all and (min-monochrome: 1) {}
+@media print and (min-resolution: 300dpi) {}
+@media print and (min-resolution: 118dpcm) {}
+@media tv and (scan: progressive) {}
+@media handheld and (grid) and (max-width: 15em) {}
+@media handheld and (grid) and (max-device-height: 7em) {}
+
+/* issue #35 */
+@media embossed, print, aural {
+        .noprint {
+                display: none;
+        }
+}
+
+/* Malformed */
+@media example { body { background:red } }
+@media screen and (max-weight: 3kg) and (color), (color)
+@media (min-orientation:portrait) {}
+@media (color:20example) {}
+@media (example, all,), speech { /* only applicable to speech devices */ }
+@media &test, screen           { /* only applicable to screen devices */ }
+@media all and(color) {}
+@media test;,all { body { background:lime } }
+/* End of Malformed */
