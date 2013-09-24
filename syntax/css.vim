@@ -6,7 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
 " URL:          https://github.com/JulesWang/css.vim
-" Last Change:  2013 Aug 28
+" Last Change:  2013 Sep.24
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -108,7 +108,7 @@ syn match cssKeyFrameSelector /\(\d*%\|from\|to\)\=/  contained skipwhite skipnl
 syn region cssInclude start=/@import\>/ end=/\ze;/ contains=cssComment,cssURL,cssUnicodeEscape,cssMediaQuery,cssStringQ,cssStringQQ,cssIncludeKeyword
 syn region cssInclude start=/@charset\>/ end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment,cssIncludeKeyword
 syn region cssInclude start=/@namespace\>/ end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment,cssIncludeKeyword
-syn keyword cssIncludeKeyword import charset namespace contained
+syn match cssIncludeKeyword /\(@import\|@charset\|@namespace\)/ contained
 
 " @font-face
 " http://www.w3.org/TR/css3-fonts/#at-font-face-rule
