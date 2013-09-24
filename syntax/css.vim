@@ -21,9 +21,6 @@ elseif exists("b:current_syntax") && b:current_syntax == "css"
   finish
 endif
 
-" Required for cssHacks
-setlocal iskeyword-=_
-
 let s:cpo_save = &cpo
 set cpo&vim
 
