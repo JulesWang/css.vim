@@ -27,7 +27,7 @@
 @media all { body { background:lime } }
 @media print and (min-width: 25cm) {}
 @media screen and (min-width: 400px) and (max-width: 700px) {}
-@media handheld and (min-width: 20em),
+@media handheld and (min-width: 20em), /*new line*/
 screen and (min-width: 20em) {}
 
 @media screen and (device-width: 800px) {}
@@ -55,13 +55,79 @@ screen and (min-width: 20em) {}
         }
 }
 
+/* issue #35 */
+@media screen
+and (orientation:portrait)
+and (min-device-width:768px)
+and (max-device-width:1024px)
+,print and (max-width: 15em) {
+    body, div {
+        display:block;
+    }
+}
+
+/* @keyframes tests */
+.div {
+    animation-name: diagonal-slide;
+    animation-duration: 5s;
+    animation-iteration-count: 10;
+    animation-fill-mode: 10;
+    animation-play-state: 12;
+    animation-timing-function:10;
+    animation-delay:10;
+}
+
+@keyframes diagonal-slide {
+    from {
+        left: 0;
+        top: 0;
+    }
+
+    to {
+        left: 100px;
+        top: 100px;
+    }
+}
+
+@keyframes bounce {
+
+  from {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+
+  25% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+
+  75% {
+    top: 75px;
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    top: 100px;
+  }
+
+}
+
+@namespace "http://www.w3.org/1999/xhtml";
+@namespace svg "http://www.w3.org/2000/svg";
+@charset "ISO-8859-1";
+
 /* Malformed */
-@media example { body { background:red } }
+@media example { body { background: red } }
 @media screen and (max-weight: 3kg) and (color), (color)
 @media (min-orientation:portrait) {}
 @media (color:20example) {}
 @media (example, all,), speech { /* only applicable to speech devices */ }
 @media &test, screen           { /* only applicable to screen devices */ }
-@media all and(color) {}
 @media test;,all { body { background:lime } }
+@keyframes  {}
 /* End of Malformed */
