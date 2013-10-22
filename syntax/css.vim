@@ -58,7 +58,8 @@ syn match cssSelectorOp2 "[~|^$*]\?=" contained
 syn region cssAttributeSelector matchgroup=cssSelectorOp start="\[" end="]" contains=cssUnicodeEscape,cssSelectorOp2,cssStringQ,cssStringQQ
 
 " .class and #id
-syn match cssClassName "\.[A-Za-z][A-Za-z0-9_-]\+"
+syn match cssClassName "\.[A-Za-z][A-Za-z0-9_-]\+" contains=cssClassNameDot
+syn match cssClassNameDot contained '\.'
 
 try
 syn match cssIdentifier "#[A-Za-zÀ-ÿ_@][A-Za-zÀ-ÿ0-9_@-]*"
@@ -616,6 +617,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssFontDescriptorAttr cssAttr
   HiLink cssUnicodeRange Constant
   HiLink cssClassName Function
+  HiLink cssClassNameDot Function
   HiLink cssProp StorageClass
   HiLink cssAttr Constant
   HiLink cssUnitDecorators Number
