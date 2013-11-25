@@ -458,8 +458,8 @@ syn match cssPseudoClassId contained  "\<\(input-\)\=placeholder\>"
 syn region cssComment start="/\*" end="\*/" contains=@Spell fold
 
 syn match cssUnicodeEscape "\\\x\{1,6}\s\?"
-syn match cssSpecialCharQQ +\\"+ contained
-syn match cssSpecialCharQ +\\'+ contained
+syn match cssSpecialCharQQ +\\\\\|\\"+ contained
+syn match cssSpecialCharQ +\\\\\|\\'+ contained
 syn region cssStringQQ start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=cssUnicodeEscape,cssSpecialCharQQ
 syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEscape,cssSpecialCharQ
 
