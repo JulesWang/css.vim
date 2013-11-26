@@ -48,23 +48,6 @@ screen and (min-width: 20em) {}
 @media handheld and (grid) and (max-width: 15em) {}
 @media handheld and (grid) and (max-device-height: 7em) {}
 
-/* issue #35 */
-@media embossed, print, aural {
-        .noprint {
-                display: none;
-        }
-}
-
-/* issue #35 */
-@media screen
-and (orientation:portrait)
-and (min-device-width:768px)
-and (max-device-width:1024px)
-,print and (max-width: 15em) {
-    body, div {
-        display:block;
-    }
-}
 
 /* @keyframes tests */
 .div {
@@ -131,3 +114,26 @@ and (max-device-width:1024px)
 @media test;,all { body { background:lime } }
 @keyframes  {}
 /* End of Malformed */
+
+/* issue #35 */
+@media embossed, print, aural {
+    .noprint {
+        display: none;
+    }
+}
+
+/* issue #35 */
+@media screen
+and (orientation:portrait)
+and (min-device-width:768px)
+and (max-device-width:1024px)
+,print and (max-width: 15em) {
+    body, div {
+        display:block;
+    }
+}
+
+/* issue 39 */
+.breadcrumb:before {
+    content: "\\";
+}
