@@ -93,10 +93,11 @@ syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(height\|width\|resolution
 syn keyword cssMediaAttr contained portrait landscape progressive interlace
 
 " @page
+" http://www.w3.org/TR/css3-page/
 syn match cssPage "@page\>"  nextgroup=cssPagePseudo,cssDefinition  skipwhite skipnl
 syn match cssPagePseudo /:\(left\|right\|first\|\)/ nextgroup=cssDefinition contained skipwhite skipnl
 syn match cssPageHeaderProp /@\(\(top\|left\|right\|bottom\)-\(left\|center\|right\|middle\|bottom\)\)\(-corner\)\=/ contained
-syn keyword cssPageProp content size contained
+syn keyword cssPageProp contained content size
 
 " @keyframe
 syn match cssKeyFrame "@\(-[a-z]*-\)\=keyframes\>[ \t\r\n\f]\+[A-Za-z-_][A-Za-z0-9_-]*" transparent nextgroup=cssKeyFrameWrap contains=cssVendor,cssIncludeKeyword skipwhite skipnl
@@ -291,12 +292,26 @@ syn keyword cssFontAttr contained bold bolder lighter
 syn match cssFontProp contained "\<font-smooth\>"
 syn match cssFontAttr contained "\<\(subpixel-\)\=\antialiased\>"
 
+
+" CSS Multi-column Layout Module
+" http://www.w3.org/TR/css3-multicol/
+syn match cssMultiColumnProp contained "\<break-\(after\|before\|inside\)\>"
+syn match cssMultiColumnProp contained "\<column-\(count\|fill\|gap\|rule\(-\(color\|style\|width\)\)\=\|span\|width\)\>"
+syn keyword cssMultiColumnProp contained columns
+" http://www.w3.org/TR/2012/WD-css3-break-20120823/#page-break
+syn match cssMultiColumnProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
+
+syn keyword cssMultiColumnAttr contained balance medium
+syn keyword cssMultiColumnAttr contained always avoid left right page column
+syn match cssMultiColumnAttr contained "\<avoid-\(page\|column\)\>"
+
+
+" TODO find following items in w3c docs.
 syn keyword cssGeneratedContentProp contained quotes crop
 syn match cssGeneratedContentProp contained "\<counter-\(reset\|increment\)\>"
 syn match cssGeneratedContentProp contained "\<move-to\>"
 syn match cssGeneratedContentProp contained "\<page-policy\>"
 syn match cssGeneratedContentAttr contained "\<\(no-\)\=\(open\|close\)-quote\>"
-
 
 syn match cssGridProp contained "\<grid-\(columns\|rows\)\>"
 
@@ -309,8 +324,6 @@ syn match cssListAttr contained "\<\(decimal\(-leading-zero\)\=\|cjk-ideographic
 syn keyword cssListAttr contained disc circle square hebrew armenian georgian
 syn keyword cssListAttr contained inside outside
 
-syn match cssMultiColumnProp contained "\<column\(-\(\break-\(after\|before\)\|count\|gap\|rule\(-\(color\|style\|width\)\)\=\)\|span\|width\)\=\>"
-
 syn keyword cssPositioningProp contained bottom clear clip display float left
 syn keyword cssPositioningProp contained position right top visibility
 syn match cssPositioningProp contained "\<z-index\>"
@@ -321,7 +334,6 @@ syn match cssPositioningAttr contained "\<list-item\>"
 syn match cssPositioningAttr contained "\<inline\(-\(block\|box\|table\)\)\=\>"
 syn keyword cssPositioningAttr contained static relative absolute fixed
 
-syn match cssPrintProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
 syn keyword cssPrintProp contained orphans widows
 syn keyword cssPrintAttr contained landscape portrait crop cross always avoid
 

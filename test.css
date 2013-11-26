@@ -137,3 +137,24 @@ and (max-device-width:1024px)
 .breadcrumb:before {
     content: "\\";
 }
+
+/* issue 40 */
+#example1 {
+    column-width: 1px;
+    column-span: inherit;
+
+    break-before: avoid;
+    break-after: avoid-column;
+    break-inside: avoid-page;
+
+    column-gap: inherit;
+    column-rule-width: inherit;
+    column-rule-color: inherit;
+    column-rule: inherit;
+    column-count: inherit;
+    columns: inherit;
+
+    page-break-before: avoid;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+}
