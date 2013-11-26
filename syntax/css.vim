@@ -218,7 +218,7 @@ syn match cssBorderProp contained "\<box-decoration-break\>"
 syn match cssBorderProp contained "\<box-shadow\>"
 
 " border-image attributes
-syn keyword cssBorderAttr contained stretch repeat round space fill
+syn keyword cssBorderAttr contained stretch round space fill
 
 " border-style attributes
 syn keyword cssBorderAttr contained dotted dashed solid double groove ridge inset outset

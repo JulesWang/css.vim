@@ -158,3 +158,10 @@ and (max-device-width:1024px)
     page-break-after: avoid;
     page-break-inside: avoid;
 }
+
+/* issue 41 */
+#example2 {
+    background-repeat: repeat;
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+}
