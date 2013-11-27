@@ -20,7 +20,7 @@ and run `:BundleInstall` in vim.
 
 Change Log
 ------------
-* 2013-11-27: Fix @page syntax by reference to the w3c standard.
+* 2013-11-27: Fix @page syntax based on the w3c standard.
 * 2013-08-28: Add support for pseudo-class functions.
 * 2013-07-30: Highlight Props and Attrs with different colors.
 * 2013-07-22: Fix @media(issue #6),@import,@charset,@namespace,@page,@keyframe syntaxs.
