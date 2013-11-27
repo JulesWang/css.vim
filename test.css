@@ -83,7 +83,6 @@ screen and (min-width: 20em) {}
     top: 50px;
     animation-timing-function: ease-in;
   }
-
   50% {
     top: 100px;
     animation-timing-function: ease-out;
@@ -97,23 +96,41 @@ screen and (min-width: 20em) {}
   to {
     top: 100px;
   }
-
 }
+
 
 @namespace "http://www.w3.org/1999/xhtml";
 @namespace svg "http://www.w3.org/2000/svg";
 @charset "ISO-8859-1";
 
-/* Malformed */
-@media example { body { background: red } }
-@media screen and (max-weight: 3kg) and (color), (color)
-@media (min-orientation:portrait) {}
-@media (color:20example) {}
-@media (example, all,), speech { /* only applicable to speech devices */ }
-@media &test, screen           { /* only applicable to screen devices */ }
-@media test;,all { body { background:lime } }
-@keyframes  {}
-/* End of Malformed */
+
+@page { ... }
+@page :left { ... }
+@page :right { ... }
+@page LandscapeTable { ... }
+@page CompanyLetterHead:first { ... } /*  identifier and pseudo page. */
+@page:first { ... }
+@page toc, index { ... }
+@page :blank:first { ... }
+
+@page :first {
+  color: green;
+  size: 8.5in 11in;
+
+  @top-left {
+    content: "foo";
+    color: blue;
+  }
+  @top-right {
+    content: "bar";
+  }
+}
+
+@page { color: red;
+  @top-center {
+    content: "Page " counter(page);
+  }
+}
 
 /* issue #35 */
 @media embossed, print, aural {
