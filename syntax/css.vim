@@ -172,8 +172,8 @@ syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>" contains=cssUnitDecorators
 syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>" contains=cssUnitDecorators
 
 syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline extend
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\|steps\)\s*(" end=")" oneline  contains=cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\|color-stop\|from\|to\)\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma,cssFunction
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\|steps\)\s*(" end=")" oneline  contains=cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma containedin=sassFunction
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\|color-stop\|from\|to\)\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma,cssFunction containedin=sassFunction
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear-\|radial-\)\=\gradient\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunction,cssGradientAttr,cssFunctionComma
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(matrix\(3d\)\=\|scale\(3d\|X\|Y\|Z\)\=\|translate\(3d\|X\|Y\|Z\)\=\|skew\(X\|Y\)\=\|rotate\(3d\|X\|Y\|Z\)\=\|perspective\)\s*(" end=")" oneline contains=cssValueInteger,cssValueNumber,cssValueLength,cssValueAngle,cssFunctionComma
 syn keyword cssGradientAttr contained top bottom left right cover center middle ellipse at
@@ -477,7 +477,7 @@ syn region cssStringQQ start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=cssUnicodeEsc
 syn region cssStringQ start=+'+ skip=+\\\\\|\\'+ end=+'+ contains=cssUnicodeEscape,cssSpecialCharQ
 
 " Vendor Prefix
-syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)"
+syn match cssVendor contained "\(-\(webkit\|moz\|o\|ms\)-\)" containedin=sassproperty
 
 " Various CSS Hack characters
 " In earlier versions of IE (6 and 7), one can prefix property names
@@ -489,15 +489,15 @@ syn match cssHacks contained /\(_\|*\)/
 
 " Misc highlight groups
 syntax match cssUnitDecorators /\(#\|-\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
-syntax match cssNoise contained /\(:\|;\|\/\)/
+syntax match cssNoise contained /\(:\|;\|\/\)/ containedin=sassDefinition,sassProperty,cssPseudoClass,sassVariableAssignment
 
 " Attr Enhance
 " Some keywords are both Prop and Attr, so we have to handle them
-syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
+syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise  containedin=sassVariableAssignment,sassCssAttribute
 
 " Hack for transition
 " The 'transition' Prop has Props after ':'.
-syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained keepend contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
+syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained keepend contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise containedin=sassVariableAssignment,sassCssAttribute
 
 
 if main_syntax == "css"
