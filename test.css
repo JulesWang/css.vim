@@ -60,7 +60,7 @@ screen and (min-width: 20em) {}
     animation-delay:10;
 }
 
-@keyframes diagonal-slide {
+@-webkit-keyframes diagonal-slide {
     from {
         left: 0;
         top: 0;
