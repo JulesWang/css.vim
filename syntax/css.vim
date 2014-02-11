@@ -196,6 +196,9 @@ syn keyword cssAnimationAttr contained forwards backwards both
 
 " animation-play-state attributes
 syn keyword cssAnimationAttr contained running paused
+
+" animation-iteration-count attributes
+syn keyword cssAnimationAttr contained infinite
 "------------------------------------------------
 "  CSS Backgrounds and Borders Module Level 3
 "  http://www.w3.org/TR/css3-background/
