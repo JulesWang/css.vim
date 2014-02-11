@@ -171,7 +171,7 @@ syn match cssColor contained "\<white\>"
 syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>" contains=cssUnitDecorators
 syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>" contains=cssUnitDecorators
 
-syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" oneline extend
+syn region cssURL contained matchgroup=cssFunctionName start="\<url\s*(" end=")" contains=cssStringQ,cssStringQQ oneline
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\|steps\)\s*(" end=")" oneline  contains=cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\|color-stop\|from\|to\)\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma,cssFunction
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear-\|radial-\)\=\gradient\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunction,cssGradientAttr,cssFunctionComma
@@ -448,7 +448,7 @@ syn match cssMobileTextProp contained "\<text-size-adjust\>"
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks keepend fold
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks fold
 syn match cssBraceError "}"
 syn match cssAttrComma ","
 
@@ -493,11 +493,11 @@ syntax match cssNoise contained /\(:\|;\|\/\)/
 
 " Attr Enhance
 " Some keywords are both Prop and Attr, so we have to handle them
-syn region cssAttrRegion start=/:/ end=/;/ contained keepend contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
+syn region cssAttrRegion start=/:/ end=/\ze\(;\|)\|}\)/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
 
 " Hack for transition
-" The 'transition' Prop has Props after ':'.
-syn region cssAttrRegion start=/transition\s*:/ end=/;/ contained keepend contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
+" 'transition' has Props after ':'.
+syn region cssAttrRegion start=/transition\s*:/ end=/\ze\(;\|)\|}\)/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
 
 
 if main_syntax == "css"

@@ -182,3 +182,17 @@ and (max-device-width:1024px)
     background-repeat: repeat-x;
     background-repeat: repeat-y;
 }
+
+
+/* issue 42 */
+.issue42 {
+    background-image: url('{!URLFOR($Resource.images)}/background.png');
+    background-image: url('{!URLFOR($Resource.images)}/background.png'), url('{!URLFOR($Resource.images)}/background.png')
+}
+
+@font-face
+{
+    font-family: myFirstFont;
+    src: url(sansation_bold.woff);
+    font-weight:bold;
+}
