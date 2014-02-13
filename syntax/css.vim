@@ -167,6 +167,7 @@ syn case ignore
 syn match cssImportant contained "!\s*important\>"
 
 syn match cssColor contained "\<transparent\>"
+syn match cssColor contained "\<currentColor\>"
 syn match cssColor contained "\<white\>"
 syn match cssColor contained "#[0-9A-Fa-f]\{3\}\>" contains=cssUnitDecorators
 syn match cssColor contained "#[0-9A-Fa-f]\{6\}\>" contains=cssUnitDecorators
