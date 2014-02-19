@@ -86,7 +86,7 @@ syn match cssMediaComma "," skipwhite skipnl contained
 
 " Reference: http://www.w3.org/TR/css3-mediaqueries/
 syn keyword cssMediaProp contained width height orientation scan grid
-syn match cssMediaProp contained /\(\(device\)-\)\=aspect-ratio/
+syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(\(device\)-\)\=aspect-ratio/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-pixel-ratio/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-\(height\|width\)/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(height\|width\|resolution\|monochrome\|color\(-index\)\=\)/
