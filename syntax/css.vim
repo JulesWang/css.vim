@@ -257,7 +257,7 @@ syn keyword cssDimensionProp contained width
 syn match cssFlexibleBoxProp contained "\<box-\(align\|direction\|flex\|ordinal-group\|orient\|pack\|shadow\|sizing\)\>"
 syn keyword cssFlexibleBoxAttr contained start end baseline
 syn keyword cssFlexibleBoxAttr contained reverse
-syn keyword cssFlexibleBoxAttr contained single mulitple
+syn keyword cssFlexibleBoxAttr contained single multiple
 syn keyword cssFlexibleBoxAttr contained horizontal
 syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>" "escape vertical-align
 syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
