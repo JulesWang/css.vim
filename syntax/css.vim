@@ -639,7 +639,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssAttr Constant
   HiLink cssUnitDecorators Number
   HiLink cssNoise Noise
-  HiLink atKeyword Comment
+  HiLink atKeyword PreProc
   delcommand HiLink
 endif
 
