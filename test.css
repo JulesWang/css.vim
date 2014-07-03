@@ -178,6 +178,7 @@ and (max-device-width:1024px)
 
 /* issue 41 */
 #example2 {
+    /* with a test comment */
     background-repeat: repeat;
     background-repeat: repeat-x;
     background-repeat: repeat-y;
@@ -192,6 +193,7 @@ and (max-device-width:1024px)
 
 @font-face
 {
+    /* with a test comment */
     font-family: myFirstFont;
     src: url(sansation_bold.woff);
     font-weight:bold;
