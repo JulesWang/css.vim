@@ -29,17 +29,16 @@ syn case ignore
 " HTML4 tags
 syn keyword cssTagName abbr address area a b base
 syn keyword cssTagName bdo blockquote body br button
-syn keyword cssTagName cite code colgroup dd del
-syn keyword cssTagName dfn div dl dt fieldset form
+syn keyword cssTagName caption cite code col colgroup dd del
+syn keyword cssTagName dfn div dl dt em fieldset form
 syn keyword cssTagName h1 h2 h3 h4 h5 h6 head hr html img i
 syn keyword cssTagName iframe input ins isindex kbd label legend li
 syn keyword cssTagName link map menu meta noscript ol optgroup
-syn keyword cssTagName option p param q s samp script
-syn keyword cssTagName strong sub sup tbody td
+syn keyword cssTagName option p param pre q s samp script small
+syn keyword cssTagName span strong sub sup tbody td
 syn keyword cssTagName textarea tfoot th thead title tr ul u var
 syn keyword cssTagName object svg
-syn match   cssTagName /\<caption\|col\|em\|pre\|select\|small\>/
-syn match   cssTagName /\<span\|style\|table\>/
+syn match   cssTagName /\<select\>\|\<style\>\|\<table\>/
 
 " 34 HTML5 tags
 syn keyword cssTagName article aside audio bdi canvas command data
