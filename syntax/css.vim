@@ -6,7 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
 " URL:          https://github.com/JulesWang/css.vim
-" Last Change:  2013 Nov.27
+" Last Change:  2014 Oct.28
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -26,18 +26,20 @@ set cpo&vim
 
 syn case ignore
 
-" All HTML4 tags
-syn keyword cssTagName abbr acronym address applet area a b base
-syn keyword cssTagName basefont bdo big blockquote body br button
-syn keyword cssTagName caption center cite code col colgroup dd del
-syn keyword cssTagName dfn dir div dl dt em fieldset font form frame
-syn keyword cssTagName frameset h1 h2 h3 h4 h5 h6 head hr html img i
-syn keyword cssTagName iframe img input ins isindex kbd label legend li
-syn keyword cssTagName link map menu meta noframes noscript ol optgroup
-syn keyword cssTagName option p param pre q s samp script select small
-syn keyword cssTagName span strike strong style sub sup table tbody td
-syn keyword cssTagName textarea tfoot th thead title tr tt ul u var
+" HTML4 tags
+syn keyword cssTagName abbr address area a b base
+syn keyword cssTagName bdo blockquote body br button
+syn keyword cssTagName cite code colgroup dd del
+syn keyword cssTagName dfn div dl dt fieldset form
+syn keyword cssTagName h1 h2 h3 h4 h5 h6 head hr html img i
+syn keyword cssTagName iframe input ins isindex kbd label legend li
+syn keyword cssTagName link map menu meta noscript ol optgroup
+syn keyword cssTagName option p param q s samp script
+syn keyword cssTagName strong sub sup tbody td
+syn keyword cssTagName textarea tfoot th thead title tr ul u var
 syn keyword cssTagName object svg
+syn match   cssTagName /\<caption\|col\|em\|pre\|select\|small\>/
+syn match   cssTagName /\<span\|style\|table\>/
 
 " 34 HTML5 tags
 syn keyword cssTagName article aside audio bdi canvas command data
@@ -47,8 +49,8 @@ syn keyword cssTagName output progress rt rp ruby section
 syn keyword cssTagName source summary time track video wbr
 
 " Tags not supported in HTML5
-syn keyword cssDeprecated acronym applet basefont big center dir
-syn keyword cssDeprecated font frame frameset noframes strike tt
+" acronym applet basefont big center dir
+" font frame frameset noframes strike tt
 
 syn match cssTagName "\*"
 
