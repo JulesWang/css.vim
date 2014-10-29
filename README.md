@@ -13,10 +13,10 @@ copy `css.vim` file into your `~/.vim/syntax/` directory;
 add the following line to your `~/.vimrc` file;
 
 ```
-Bundle "JulesWang/css.vim"
+Plugin 'JulesWang/css.vim'
 ```
 
-and run `:BundleInstall` in vim.
+and run `:PluginInstall` in vim.
 
 Change Log
 ------------
