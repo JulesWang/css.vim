@@ -421,6 +421,10 @@ syn keyword cssUIAttr contained both horizontal vertical
 syn match cssUIProp contained "\<text-overflow\>"
 syn keyword cssUIAttr contained clip ellipsis
 
+syn match cssUIProp contained "\<image-rendering\>"
+syn keyword cssUIAttr contained pixellated
+syn match cssUIAttr contained "\<crisp-edges\>"
+
 " Already highlighted Props: font content
 "------------------------------------------------
 " Webkit/iOS specific attributes
