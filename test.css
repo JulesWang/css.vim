@@ -204,3 +204,9 @@ and (max-device-width:1024px)
     /* negative example */
     font-size: normal;
 }
+
+/* issue 54 */
+.issue54 {
+    pointer-events: painted;
+    pointer-events: visibleFill;
+}

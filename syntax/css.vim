@@ -320,6 +320,10 @@ syn match cssMultiColumnAttr contained "\<avoid-\(page\|column\)\>"
 " http://www.w3.org/TR/css3-break/#page-break
 syn match cssMultiColumnProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
 
+" http://www.w3.org/TR/SVG11/interact.html
+syn match cssInteractProp contained "\<pointer-events\>"
+syn match cssInteractAttr contained "\<\(visible\)\=\(Painted\|Fill\|Stroke\)\=\>"
+
 " TODO find following items in w3c docs.
 syn keyword cssGeneratedContentProp contained quotes crop
 syn match cssGeneratedContentProp contained "\<counter-\(reset\|increment\)\>"
@@ -536,6 +540,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssAttrComma Special
 
   HiLink cssAnimationProp cssProp
+  HiLink cssAuralProp cssProp
   HiLink cssBackgroundProp cssProp
   HiLink cssBorderProp cssProp
   HiLink cssBoxProp cssProp
@@ -547,13 +552,17 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssGeneratedContentProp cssProp
   HiLink cssGridProp cssProp
   HiLink cssHyerlinkProp cssProp
+  HiLink cssIEUIProp cssProp
+  HiLink cssInteractProp cssProp
   HiLink cssLineboxProp cssProp
   HiLink cssListProp cssProp
   HiLink cssMarqueeProp cssProp
+  HiLink cssMobileTextProp cssProp
   HiLink cssMultiColumnProp cssProp
   HiLink cssPagedMediaProp cssProp
   HiLink cssPositioningProp cssProp
   HiLink cssPrintProp cssProp
+  HiLink cssRenderProp cssProp
   HiLink cssRubyProp cssProp
   HiLink cssSpeechProp cssProp
   HiLink cssTableProp cssProp
@@ -561,22 +570,22 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssTransformProp cssProp
   HiLink cssTransitionProp cssProp
   HiLink cssUIProp cssProp
-  HiLink cssIEUIProp cssProp
-  HiLink cssAuralProp cssProp
-  HiLink cssRenderProp cssProp
-  HiLink cssMobileTextProp cssProp
 
   HiLink cssAnimationAttr cssAttr
+  HiLink cssAuralAttr cssAttr
   HiLink cssBackgroundAttr cssAttr
   HiLink cssBorderAttr cssAttr
   HiLink cssBoxAttr cssAttr
   HiLink cssContentForPagedMediaAttr cssAttr
+  HiLink cssCommonAttr cssAttr
   HiLink cssDimensionAttr cssAttr
   HiLink cssFlexibleBoxAttr cssAttr
   HiLink cssFontAttr cssAttr
   HiLink cssGeneratedContentAttr cssAttr
   HiLink cssGridAttr cssAttr
   HiLink cssHyerlinkAttr cssAttr
+  HiLink cssIEUIAttr cssAttr
+  HiLink cssInteractAttr cssAttr
   HiLink cssLineboxAttr cssAttr
   HiLink cssListAttr cssAttr
   HiLink cssMarginAttr cssAttr
@@ -587,6 +596,7 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssPositioningAttr cssAttr
   HiLink cssGradientAttr cssAttr
   HiLink cssPrintAttr cssAttr
+  HiLink cssRenderAttr cssAttr
   HiLink cssRubyAttr cssAttr
   HiLink cssSpeechAttr cssAttr
   HiLink cssTableAttr cssAttr
@@ -594,10 +604,6 @@ if version >= 508 || !exists("did_css_syn_inits")
   HiLink cssTransformAttr cssAttr
   HiLink cssTransitionAttr cssAttr
   HiLink cssUIAttr cssAttr
-  HiLink cssIEUIAttr cssAttr
-  HiLink cssAuralAttr cssAttr
-  HiLink cssRenderAttr cssAttr
-  HiLink cssCommonAttr cssAttr
 
   HiLink cssPseudoClassId PreProc
   HiLink cssPseudoClassLang Constant
