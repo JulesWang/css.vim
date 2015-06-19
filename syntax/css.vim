@@ -226,7 +226,6 @@ syn keyword cssBackgroundAttr contained left center right top bottom
 " background-repeat attributes
 syn match cssBackgroundAttr contained "\<no-repeat\>"
 syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
-syn keyword cssBackgroundAttr contained space round
 
 " background-size attributes
 syn keyword cssBackgroundAttr contained cover contain
@@ -238,7 +237,7 @@ syn match cssBorderProp contained "\<box-decoration-break\>"
 syn match cssBorderProp contained "\<box-shadow\>"
 
 " border-image attributes
-syn keyword cssBorderAttr contained stretch round space fill
+syn keyword cssBorderAttr contained stretch round fill
 
 " border-style attributes
 syn keyword cssBorderAttr contained dotted dashed solid double groove ridge inset outset
@@ -266,14 +265,18 @@ syn match cssDimensionProp contained "\<\(min\|max\)-\(width\|height\)\>"
 syn keyword cssDimensionProp contained height
 syn keyword cssDimensionProp contained width
 
-" shadow and sizing are in other property groups
-syn match cssFlexibleBoxProp contained "\<box-\(align\|direction\|flex\|ordinal-group\|orient\|pack\|shadow\|sizing\)\>"
-syn keyword cssFlexibleBoxAttr contained start end baseline
-syn keyword cssFlexibleBoxAttr contained reverse
-syn keyword cssFlexibleBoxAttr contained single multiple
-syn keyword cssFlexibleBoxAttr contained horizontal
-syn match cssFlexibleBoxAttr contained "\<vertical\(-align\)\@!\>" "escape vertical-align
-syn match cssFlexibleBoxAttr contained "\<\(inline\|block\)-axis\>"
+" CSS Flexible Box Layout Module Level 1
+" http://www.w3.org/TR/css3-flexbox/
+" CSS Box Alignment Module Level 3
+" http://www.w3.org/TR/css-align-3/
+syn match cssFlexibleBoxProp contained "\<flex\(-\(direction\|wrap\|flow\|grow\|shrink\|basis\)\)\=\>"
+syn match cssFlexibleBoxProp contained "\<\(align\|justify\)\(-\(items\|self\|content\)\)\=\>"
+syn keyword cssFlexibleBoxProp contained order
+
+syn match cssFlexibleBoxAttr contained "\<\(row\|column\|wrap\)\(-reverse\)\=\>"
+syn keyword cssFlexibleBoxAttr contained nowrap stretch baseline center
+syn match cssFlexibleBoxAttr contained "\<flex-\(start\|end\)\>"
+syn match cssFlexibleBoxAttr contained "\<space\(-\(between\|around\)\)\=\>"
 
 " CSS Fonts Module Level 3
 " http://www.w3.org/TR/css-fonts-3/

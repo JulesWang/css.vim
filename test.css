@@ -210,3 +210,11 @@ and (max-device-width:1024px)
     pointer-events: painted;
     pointer-events: visibleFill;
 }
+
+/* issue 56 */
+.issue56 {
+    flex-direction: row-reverse;
+    flex-flow: row nowrap;
+    align-self: flex-start;
+    justify-content: space-between;
+}
