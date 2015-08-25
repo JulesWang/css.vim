@@ -164,8 +164,8 @@ syn keyword cssColor contained midnightblue mintcream mistyrose moccasin navajow
 syn keyword cssColor contained oldlace olivedrab orange orangered orchid
 syn match cssColor contained /\<pale\(goldenrod\|green\|turquoise\|violetred\)\>/
 syn keyword cssColor contained papayawhip peachpuff peru pink plum powderblue
-syn keyword cssColor contained rosybrown royalblue saddlebrown salmon sandybrown
-syn keyword cssColor contained seagreen seashell sienna skyblue slateblue
+syn keyword cssColor contained rosybrown royalblue rebeccapurple saddlebrown salmon
+syn keyword cssColor contained sandybrown seagreen seashell sienna skyblue slateblue
 syn keyword cssColor contained slategray slategrey snow springgreen steelblue tan
 syn keyword cssColor contained thistle tomato turquoise violet wheat
 syn keyword cssColor contained whitesmoke yellowgreen
