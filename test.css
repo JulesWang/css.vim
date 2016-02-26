@@ -220,3 +220,7 @@ and (max-device-width:1024px)
 .issue57 {
     color: rebeccapurple;
 }
+
+.issue59 {
+    display: flex;
+}
