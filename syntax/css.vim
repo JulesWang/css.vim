@@ -317,8 +317,8 @@ syn match cssMultiColumnProp contained "\<break-\(after\|before\|inside\)\>"
 syn match cssMultiColumnProp contained "\<column-\(count\|fill\|gap\|rule\(-\(color\|style\|width\)\)\=\|span\|width\)\>"
 syn keyword cssMultiColumnProp contained columns
 syn keyword cssMultiColumnAttr contained balance medium
-syn keyword cssMultiColumnAttr contained always avoid left right page column
-syn match cssMultiColumnAttr contained "\<avoid-\(page\|column\)\>"
+syn keyword cssMultiColumnAttr contained always left right page column
+syn match cssMultiColumnAttr contained "\<avoid\(-\(page\|column\)\)\=\>"
 
 " http://www.w3.org/TR/css3-break/#page-break
 syn match cssMultiColumnProp contained "\<page\(-break-\(before\|after\|inside\)\)\=\>"
@@ -355,7 +355,7 @@ syn match cssPositioningAttr contained "\<list-item\>"
 syn match cssPositioningAttr contained "\<inline\(-\(block\|box\|table\)\)\=\>"
 syn keyword cssPositioningAttr contained static relative absolute fixed
 
-syn keyword cssPrintAttr contained landscape portrait crop cross always avoid
+syn keyword cssPrintAttr contained landscape portrait crop cross always
 
 syn match cssTableProp contained "\<\(caption-side\|table-layout\|border-collapse\|border-spacing\|empty-cells\)\>"
 syn keyword cssTableAttr contained fixed collapse separate show hide once always
