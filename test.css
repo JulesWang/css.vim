@@ -51,7 +51,7 @@ screen and (min-width: 20em) {}
 
 /* @keyframes tests */
 .div {
-    animation-name: diagonal-slide;
+    animation-name: custom-name-not-highlighted;
     animation-duration: 5s;
     animation-iteration-count: 10;
     animation-fill-mode: 10;
@@ -60,7 +60,7 @@ screen and (min-width: 20em) {}
     animation-delay:10;
 }
 
-@-webkit-keyframes diagonal-slide {
+@-webkit-keyframes custom-name-not-highlighted {
     from {
         left: 0;
         top: 0;
@@ -88,7 +88,7 @@ screen and (min-width: 20em) {}
     animation-timing-function: ease-out;
   }
 
-  75% {
+  75.75% {
     top: 75px;
     animation-timing-function: ease-in;
   }
@@ -150,13 +150,11 @@ and (max-device-width:1024px)
     }
 }
 
-/* issue 39 */
-.breadcrumb:before {
+#issue39:before {
     content: "\\";
 }
 
-/* issue 40 */
-#example1 {
+#issue40 {
     column-width: 1px;
     column-span: inherit;
 
@@ -176,8 +174,7 @@ and (max-device-width:1024px)
     page-break-inside: avoid;
 }
 
-/* issue 41 */
-#example2 {
+#issue41 {
     /* with a test comment */
     background-repeat: repeat;
     background-repeat: repeat-x;
@@ -185,8 +182,7 @@ and (max-device-width:1024px)
 }
 
 
-/* issue 42 */
-.issue42 {
+#issue42 {
     background-image: url('{!URLFOR($Resource.images)}/background.png');
     background-image: url('{!URLFOR($Resource.images)}/background.png'), url('{!URLFOR($Resource.images)}/background.png')
 }
@@ -205,22 +201,27 @@ and (max-device-width:1024px)
     font-size: normal;
 }
 
-.issue54 {
+#issue54 {
     pointer-events: painted;
     pointer-events: visibleFill;
 }
 
-.issue56 {
+#issue56 {
     flex-direction: row-reverse;
     flex-flow: row nowrap;
     align-self: flex-start;
     justify-content: space-between;
 }
 
-.issue57 {
+#issue57 {
     color: rebeccapurple;
 }
 
-.issue59 {
+#issue59 {
     display: flex;
+}
+
+#issue61 {
+    height: +10.10px;
+    height: -1000%;
 }
