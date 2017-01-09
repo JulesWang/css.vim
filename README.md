@@ -1,6 +1,8 @@
 Vim CSS Syntax File
 ------------
 
+This plugin contributes to [vim-polyglot](https://github.com/sheerun/vim-polyglot) language pack.
+
 Installation
 -------------
 
