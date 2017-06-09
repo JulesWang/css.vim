@@ -1,3 +1,6 @@
+# This repo is Deprecated
+# Pls go to https://github.com/vim/vim/blob/master/runtime/syntax/css.vim
+
 Vim CSS Syntax File
 ------------
 
