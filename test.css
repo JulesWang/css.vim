@@ -1,3 +1,34 @@
+@media print {
+  /* hide navigation controls when printing */
+  #navigation { display: none}
+  @media (max-width: 12cm) {
+    /* keep notes in flow when printing to narrow pages */
+    .note { float: none }
+  }
+}
+
+
+@supports (-webkit-perspective: 20px) and (not (perspective: 20px)) and (not (display: none)) {
+  /* CSS declarations for this condition */
+}
+
+
+/* Media query */
+@media screen and (min-width: 900px) {
+  .article {
+    padding: 1rem 3rem;
+  }
+}
+
+/* Nested media query */
+@supports (display: none) {
+  @media screen and (min-width: 900px) {
+    article {
+      display: none;
+    }
+  }
+}
+
 /* @media tests*/
 @media screen {
   * { font-family: sans-serif }
@@ -17,7 +48,9 @@
 @media all {}
 @media {}
 
+
 @import url(example.css) screen and (color), projection and (color);
+
 @import "example.css" screen and (color), projection and (color);
 
 @media screen and (color), projection and (color) {}
@@ -60,7 +93,7 @@ screen and (min-width: 20em) {}
     animation-delay:10;
 }
 
-@-webkit-keyframes custom-name-not-highlighted {
+@-webkit-keyframes tv-name-not-highlighted {
     from {
         left: 0;
         top: 0;
@@ -88,7 +121,7 @@ screen and (min-width: 20em) {}
     animation-timing-function: ease-out;
   }
 
-  75.75% {
+  25.75%, 75% {
     top: 75px;
     animation-timing-function: ease-in;
   }
@@ -181,15 +214,13 @@ and (max-device-width:1024px)
     background-repeat: repeat-y;
 }
 
-
 #issue42 {
     background-image: url('{!URLFOR($Resource.images)}/background.png');
     background-image: url('{!URLFOR($Resource.images)}/background.png'), url('{!URLFOR($Resource.images)}/background.png')
 }
 
 /* @font-face test */
-@font-face
-{
+@font-face {
     /* with a test comment */
     font-family: myFirstFont, serif;
     src: url(ideal-sans-serif.woff) format("woff"),
@@ -197,8 +228,6 @@ and (max-device-width:1024px)
     src: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
     unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF, U+4??;
     font-weight:bold;
-    /* negative example */
-    font-size: normal;
 }
 
 #issue54 {
