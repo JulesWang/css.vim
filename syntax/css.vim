@@ -69,7 +69,7 @@ endtry
 " digits
 syn match cssValueInteger contained "[-+]\=\d\+" contains=cssUnitDecorators
 syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\=" contains=cssUnitDecorators
-syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\)\>" contains=cssUnitDecorators
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|fr\)\>" contains=cssUnitDecorators
 syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=%" contains=cssUnitDecorators
 syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)\>" contains=cssUnitDecorators
 syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)\>" contains=cssUnitDecorators
@@ -273,10 +273,10 @@ syn match cssGeneratedContentAttr contained "\<\(no-\)\=\(open\|close\)-quote\>"
 
 " https://www.w3.org/TR/css-grid-1/
 syn match cssGridProp contained "\<grid\>"
-syn match cssGridProp contained "\<grid\(-\(template\|auto\)\)\=\(-\(columns\|rows\|areas\)\)\>"
+syn match cssGridProp contained "\<grid-template\(-\(columns\|rows\|areas\)\)\=\>"
 syn match cssGridProp contained "\<grid-\(column\|row\)\(-\(start\|end\|gap\)\)\=\>"
 syn match cssGridProp contained "\<grid-\(area\|gap\)\>"
-syn match cssGridProp contained "\<grid-auto-flow\>"
+syn match cssGridProp contained "\<grid-auto-\(flow\|rows\|columns\)\>"
 
 syn match cssHyerlinkProp contained "\<target\(-\(name\|new\|position\)\)\=\>"
 
@@ -408,13 +408,13 @@ syn keyword cssAuralAttr contained male female child code digits continuous
 " mobile text
 syn match cssMobileTextProp contained "\<text-size-adjust\>"
 
-syn keyword cssMediaProp contained width height orientation scan grid
+syn keyword cssMediaProp contained width height orientation scan
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(\(device\)-\)\=aspect-ratio/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-pixel-ratio/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-\(height\|width\)/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(height\|width\|resolution\|monochrome\|color\(-index\)\=\)/
 syn keyword cssMediaAttr contained portrait landscape progressive interlace
-syn match cssKeyFrameProp /\d*%\|from\|to/  contained nextgroup=cssDefinition
+syn match cssKeyFrameProp contained /\<\(from\|to\)\>/ nextgroup=cssDefinition
 syn match cssPageMarginProp /@\(\(top\|left\|right\|bottom\)-\(left\|center\|right\|middle\|bottom\)\)\(-corner\)\=/ contained nextgroup=cssDefinition
 syn keyword cssPageProp contained content size
 syn keyword cssPageProp contained orphans widows
