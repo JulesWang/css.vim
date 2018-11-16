@@ -193,6 +193,9 @@ syn match cssBoxProp contained "\<rotation\(-point\)\=\>"
 syn keyword cssBoxAttr contained visible hidden scroll auto
 syn match cssBoxAttr contained "\<no-\(display\|content\)\>"
 
+syn keyword cssCascadeProp contained all
+syn keyword cssCascadeAttr contained initial unset revert
+
 syn keyword cssColorProp contained opacity
 syn match cssColorProp contained "\<color-profile\>"
 syn match cssColorProp contained "\<rendering-intent\>"
@@ -303,12 +306,13 @@ syn match cssTableProp contained "\<\(caption-side\|table-layout\|border-collaps
 syn keyword cssTableAttr contained fixed collapse separate show hide once always
 
 
-syn keyword cssTextProp contained color direction
+syn keyword cssTextProp contained color direction hyphens
 syn match cssTextProp "\<\(\(word\|letter\)-spacing\|text\(-\(decoration\|transform\|align\|index\|shadow\)\)\=\|vertical-align\|unicode-bidi\|line-height\)\>"
 syn match cssTextProp contained "\<text-\(justify\|outline\|warp\|align-last\|size-adjust\|rendering\|stroke\|indent\)\>"
-syn match cssTextProp contained "\<word-\(break\|\wrap\)\>"
+syn match cssTextProp contained "\<\(word\|line\)-break\|\(overflow\|word\)-wrap\>"
 syn match cssTextProp contained "\<white-space\>"
 syn match cssTextProp contained "\<hanging-punctuation\>"
+syn match cssTextProp contained "\<tab-size\>"
 syn match cssTextProp contained "\<punctuation-trim\>"
 syn match cssTextAttr contained "\<line-through\>"
 syn match cssTextAttr contained "\<\(text-\)\=\(top\|bottom\)\>"
@@ -316,7 +320,7 @@ syn keyword cssTextAttr contained ltr rtl embed nowrap
 syn keyword cssTextAttr contained underline overline blink sub super middle
 syn keyword cssTextAttr contained capitalize uppercase lowercase
 syn keyword cssTextAttr contained justify baseline sub super
-syn keyword cssTextAttr contained optimizeLegibility optimizeSpeed
+syn keyword cssTextAttr contained optimizeLegibility optimizeSpeed geometricPrecision
 syn match cssTextAttr contained "\<pre\(-\(line\|wrap\)\)\=\>"
 syn match cssTextAttr contained "\<\(allow\|force\)-end\>"
 syn keyword cssTextAttr contained start end adjacent
@@ -325,7 +329,7 @@ syn keyword cssTextAttr contained distribute kashida first last
 syn keyword cssTextAttr contained clip ellipsis unrestricted suppress
 syn match cssTextAttr contained "\<break-all\>"
 syn match cssTextAttr contained "\<break-word\>"
-syn keyword cssTextAttr contained hyphenate
+syn keyword cssTextAttr contained manual
 syn match cssTextAttr contained "\<bidi-override\>"
 
 syn match cssTransformProp contained "\<transform\(-\(origin\|style\)\)\=\>"
@@ -525,6 +529,7 @@ hi def link cssAnimationProp cssProp
 hi def link cssBackgroundProp cssProp
 hi def link cssBorderProp cssProp
 hi def link cssBoxProp cssProp
+hi def link cssCascadeProp cssProp
 hi def link cssColorProp cssProp
 hi def link cssContentForPagedMediaProp cssProp
 hi def link cssDimensionProp cssProp
@@ -585,6 +590,7 @@ hi def link cssUIAttr cssAttr
 hi def link cssIEUIAttr cssAttr
 hi def link cssAuralAttr cssAttr
 hi def link cssRenderAttr cssAttr
+hi def link cssCascadeAttr cssAttr
 hi def link cssCommonAttr cssAttr
 
 hi def link cssPseudoClassId PreProc
