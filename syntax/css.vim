@@ -6,8 +6,7 @@
 "               Nikolai Weibull (Add CSS2 support)
 " URL:          https://github.com/JulesWang/css.vim
 " Maintainer:   Jules Wang      <w.jq0722@gmail.com>
-" Last Change:  2018 Feb. 27
-"               cssClassName updated by Ryuichi Hayashida Jan 2016
+" Last Change:  2018 Nov. 20
 
 " quit when a syntax file was already loaded
 if !exists("main_syntax")
@@ -474,7 +473,8 @@ syn match cssHacks contained /\(_\|*\)/
 
 " Attr Enhance
 " Some keywords are both Prop and Attr, so we have to handle them
-syn region cssAttrRegion start=/:/ end=/\ze\(;\|)\|}\)/ contained contains=css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
+" cssPseudoClassId is hidden by cssAttrRegion, so we add it here. see #69
+syn region cssAttrRegion start=/:/ end=/\ze\(;\|)\|}\|{\)/ contained contains=cssPseudoClassId,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
 
 " Hack for transition
 " 'transition' has Props after ':'.
@@ -501,9 +501,6 @@ syn region cssAtRule start=/@import\>/    end=/\ze;/ contains=cssStringQ,cssStri
 syn region cssAtRule start=/@charset\>/   end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment,cssAtKeyword
 syn region cssAtRule start=/@namespace\>/ end=/\ze;/ contains=cssStringQ,cssStringQQ,cssUnicodeEscape,cssComment,cssAtKeyword
 
-" @font-face
-" http://www.w3.org/TR/css3-fonts/#at-font-face-rule
-syn match cssAtRule "@font-face\>" nextgroup=cssFontDescriptorBlock
 " @supports
 " https://www.w3.org/TR/css3-conditional/#at-supports
 syn region cssAtRule start=/@supports\>/ end=/\ze{/ skipwhite skipnl contains=cssAtRuleLogical,cssAttrRegion,css.*Prop,cssValue.*,cssVendor,cssAtKeyword,cssComment nextgroup=cssDefinition
