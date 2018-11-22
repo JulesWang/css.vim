@@ -417,7 +417,7 @@ syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-pixel-ratio/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=device-\(height\|width\)/
 syn match cssMediaProp contained /\(\(max\|min\)-\)\=\(height\|width\|resolution\|monochrome\|color\(-index\)\=\)/
 syn keyword cssMediaAttr contained portrait landscape progressive interlace
-syn match cssKeyFrameProp contained /\<\(from\|to\)\>/ nextgroup=cssDefinition
+syn match cssKeyFrameProp contained /\(\d\+\(\.\d\+\)\?%\|\(\<from\|to\>\)\)/ nextgroup=cssDefinition
 syn match cssPageMarginProp /@\(\(top\|left\|right\|bottom\)-\(left\|center\|right\|middle\|bottom\)\)\(-corner\)\=/ contained nextgroup=cssDefinition
 syn keyword cssPageProp contained content size
 syn keyword cssPageProp contained orphans widows
