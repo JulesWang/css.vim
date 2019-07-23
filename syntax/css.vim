@@ -132,6 +132,7 @@ syn match cssFunctionComma contained ","
 " Common Prop and Attr
 syn keyword cssCommonAttr contained auto none inherit all default normal
 syn keyword cssCommonAttr contained top bottom center stretch hidden visible
+syn match cssCommonAttr contained "\(max-\|min-\|fit-\)content"
 "------------------------------------------------
 " CSS Animations
 " http://www.w3.org/TR/css3-animations/
