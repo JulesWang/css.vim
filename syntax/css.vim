@@ -440,7 +440,7 @@ syn keyword cssPseudoClassId contained link visited active hover before after le
 syn keyword cssPseudoClassId contained root empty target enable disabled checked invalid
 syn match cssPseudoClassId contained "\<first-\(line\|letter\)\>"
 syn match cssPseudoClassId contained "\<\(first\|last\|only\)-\(of-type\|child\)\>"
-syn region cssPseudoClassFn contained matchgroup=cssFunctionName start="\<\(not\|lang\|\(nth\|nth-last\)-\(of-type\|child\)\)(" end=")"
+syn region cssPseudoClassFn contained matchgroup=cssFunctionName start="\<\(not\|lang\|\(nth\|nth-last\)-\(of-type\|child\)\)(" end=")" contains=cssStringQ,cssStringQQ
 " ------------------------------------
 " Vendor specific properties
 syn match cssPseudoClassId contained  "\<selection\>"
