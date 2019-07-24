@@ -269,3 +269,6 @@ and (max-device-width:1024px)
         transition: width 2s, height 4s;
     }
 }
+
+#issue53:not([foo=")"]) {
+}

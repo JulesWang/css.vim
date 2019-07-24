@@ -480,7 +480,7 @@ syn region cssAttrRegion start=/:/ end=/\ze\(;\|)\|}\|{\)/ contained contains=cs
 " 'transition' has Props after ':'.
 syn region cssAttrRegion start=/transition\s*:/ end=/\ze\(;\|)\|}\)/ contained contains=css.*Prop,css.*Attr,cssColor,cssImportant,cssValue.*,cssFunction,cssString.*,cssURL,cssComment,cssUnicodeEscape,cssVendor,cssError,cssAttrComma,cssNoise
 
-syn match cssAtKeyword /@\(font-face\|media\|keyframes\|import\|charset\|namespace\|page\|supports\)/ contained
+syn match cssAtKeyword /@\(font-face\|media\|keyframes\|import\|charset\|namespace\|page\|supports\)/
 
 syn keyword cssAtRuleLogical only not and contained
 
