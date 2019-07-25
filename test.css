@@ -272,3 +272,21 @@ and (max-device-width:1024px)
 
 #issue53:not([foo=")"]) {
 }
+
+/* issue73 */
+:root {
+  --font-stack: 100px;
+  --pad: 10px;
+  --small-height: 100px;
+  --columns: 4;
+  --margins: calc(24px / var(--columns));
+  --primary-color: red;
+  --logo-text: var(--primary-color);
+}
+
+#issue73 {
+   height: var(--small-height);
+   font-family: var(--font-stack, "Roboto", "Helvetica");
+   padding: var(--pad, 10px 15px 20px);
+   color: var(--foo, #7F583F);
+}
