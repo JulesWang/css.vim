@@ -488,7 +488,7 @@ syn keyword cssAtRuleLogical only not and contained
 
 " @media
 " Reference: http://www.w3.org/TR/css3-mediaqueries/
-syn region cssAtRule start=/@media\>/ end=/\ze{/ skipwhite skipnl matchgroup=cssAtKeyword contains=cssMediaProp,cssValueLength,cssAtRuleLogical,cssValueInteger,cssMediaAttr,cssVendor,cssMediaType,cssComment nextgroup=cssDefinition
+syn region cssAtRule start=/@media\>/ end=/\ze{/ skipwhite skipnl matchgroup=cssAtKeyword contains=cssMediaProp,cssValueLength,cssAtRuleLogical,cssValueInteger,cssMediaAttr,cssVendor,cssMediaType,cssComment,cssCustomProp,cssFunctionName nextgroup=cssDefinition
 syn keyword cssMediaType contained screen print aural braille embossed handheld projection tty tv speech all contained
 
 " @page
