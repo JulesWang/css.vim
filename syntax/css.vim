@@ -113,7 +113,7 @@ syn keyword cssColor contained ActiveBorder ActiveCaption AppWorkspace ButtonFac
 syn case ignore
 
 syn match cssImportant contained "!\s*important\>"
-syn match cssVarible contained "--[a-zA-Z0-9-_]*"
+syn match cssCustomProp contained "--[a-zA-Z0-9-_]*"
 
 syn match cssColor contained "\<transparent\>"
 syn match cssColor contained "\<currentColor\>"
@@ -123,7 +123,7 @@ syn match cssColor contained "#\x\{6\}\>" contains=cssUnitDecorators
 syn match cssColor contained "#\x\{8\}\>" contains=cssUnitDecorators
 
 syn region cssURL contained matchgroup=cssFunctionName start="\<\(uri\|url\|local\|format\)\s*(" end=")" contains=cssStringQ,cssStringQQ oneline
-syn region cssFunction contained matchgroup=cssFunctionName start="\<\(var\|calc\)\s*(" end=")" contains=cssVarible,cssValue.*,cssFunction,cssColor,cssStringQ,cssStringQQ oneline
+syn region cssFunction contained matchgroup=cssFunctionName start="\<\(var\|calc\)\s*(" end=")" contains=cssCustomProp,cssValue.*,cssFunction,cssColor,cssStringQ,cssStringQQ oneline
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgb\|clip\|attr\|counter\|rect\|cubic-bezier\|steps\)\s*(" end=")" oneline  contains=cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(rgba\|hsl\|hsla\|color-stop\|from\|to\)\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunctionComma,cssFunction
 syn region cssFunction contained matchgroup=cssFunctionName start="\<\(linear-\|radial-\)\=\gradient\s*(" end=")" oneline  contains=cssColor,cssValueInteger,cssValueNumber,cssValueLength,cssFunction,cssGradientAttr,cssFunctionComma
@@ -431,7 +431,7 @@ syn match cssFontDescriptorAttr contained "U+\x\+-\x\+"
 
 syn match cssBraces contained "[{}]"
 syn match cssError contained "{@<>"
-syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssTagName,cssAttributeSelector,cssClassName,cssIdentifier,cssAtRule,cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssVarible,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks,cssNoise fold
+syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssTagName,cssAttributeSelector,cssClassName,cssIdentifier,cssAtRule,cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssCustomProp,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks,cssNoise fold
 syn match cssBraceError "}"
 syn match cssAttrComma ","
 
@@ -609,7 +609,7 @@ hi def link cssIdentifier Function
 hi def link cssAtRule Include
 hi def link cssAtKeyword PreProc
 hi def link cssImportant Special
-hi def link cssVarible Special
+hi def link cssCustomProp Special
 hi def link cssBraces Function
 hi def link cssBraceError Error
 hi def link cssError Error
