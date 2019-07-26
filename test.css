@@ -273,6 +273,9 @@ and (max-device-width:1024px)
 #issue53:not([foo=")"]) {
 }
 
+@media all and (min-width: var(--mobile)) {
+}
+
 /* issue73 */
 :root {
   --font-stack: 100px;
